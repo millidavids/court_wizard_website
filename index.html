@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Court Wizard — Defend Your Kingdom with Arcane Power</title>
+  <meta name="description" content="Court Wizard is a 3D real-time strategy tower defense game built in Rust. Choose from 11 wizard archetypes, master 32 spells with talent trees, and defend your kingdom.">
+  <meta name="theme-color" content="#1a1428">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=MedievalSharp&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/rpg-awesome@0.2.0/css/rpg-awesome.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.className='js'</script>
+</head>
+<body>
+
+  <!-- ═══ PARALLAX BACKGROUND ═══ -->
+  <div class="parallax" aria-hidden="true">
+    <div class="parallax-layer parallax-skybox"></div>
+    <div class="parallax-layer parallax-bg"></div>
+    <div class="parallax-layer parallax-fg"></div>
+  </div>
+
+  <!-- Viewport-fixed gradient: bright at top, dark at bottom -->
+  <div class="page-darken" aria-hidden="true"></div>
+
+  <div class="page-content">
+
+  <a href="#about" class="skip-link">Skip to content</a>
+
+  <!-- ═══ SVG SPRITE ═══ -->
+  <svg class="svg-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- Ornamental section divider -->
+      <symbol id="ornament" viewBox="0 0 400 24">
+        <line x1="20" y1="12" x2="168" y2="12" stroke="currentColor" stroke-width="0.5" opacity="0.25"/>
+        <circle cx="174" cy="12" r="1.5" fill="currentColor" opacity="0.3"/>
+        <path d="M186 3L200 12L214 3" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+        <path d="M186 21L200 12L214 21" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+        <circle cx="200" cy="12" r="2" fill="currentColor" opacity="0.25"/>
+        <circle cx="226" cy="12" r="1.5" fill="currentColor" opacity="0.3"/>
+        <line x1="232" y1="12" x2="380" y2="12" stroke="currentColor" stroke-width="0.5" opacity="0.25"/>
+        <circle cx="20" cy="12" r="1" fill="currentColor" opacity="0.15"/>
+        <circle cx="380" cy="12" r="1" fill="currentColor" opacity="0.15"/>
+      </symbol>
+
+    </defs>
+  </svg>
+
+  <!-- ═══ NAVIGATION ═══ -->
+  <nav class="nav" id="top">
+    <div class="nav-inner">
+      <a href="#top" class="nav-logo">Court Wizard</a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu">
+      <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span></span></label>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#wizards">Wizards</a></li>
+        <li><a href="#screenshots">Screenshots</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <header class="hero" id="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Court Wizard</h1>
+      <div class="hero-rule" aria-hidden="true"></div>
+      <p class="hero-tagline">Defend your kingdom with arcane power</p>
+      <p class="hero-quip">The king trusts you. Probably a mistake.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn--arcane" aria-label="Wishlist on Steam (coming soon)">
+          <i class="ra ra-fire" aria-hidden="true"></i> Wishlist on Steam
+          <span class="btn-badge">Soon</span>
+        </a>
+        <a href="#" class="btn btn--gold" aria-label="View source on GitHub (coming soon)">
+          <i class="ra ra-scroll-unfurled" aria-hidden="true"></i> View Source
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="hero-scroll-line"></div>
+    </div>
+  </header>
+
+  <div class="divider" aria-hidden="true"></div>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section class="about" id="about">
+    <div class="container about-grid">
+      <div class="about-text parchment" data-reveal>
+        <h2 class="heading heading--dark">The Story</h2>
+        <p>Court Wizard started as a hobby project &mdash; one developer learning Rust and game development from scratch. What began as a simple hobby with the Bevy engine grew into a potential business venture.</p>
+        <p>Built entirely in Rust, Court Wizard is a 2D/3D real-time strategy tower-ish defense game where you play as a powerful wizard defending your castle from relentless waves of attackers. Cast devastating spells from your tower, support your defenders, and master the arcane arts to protect your king.</p>
+        <p>Now the first title from <strong>Blackhearth Games</strong>, an indie studio born from the belief that a single developer with a little free time can build something that perhaps the rest of the world would enjoy. Open source. Made with passion for fantasy and magic. Licensed under GPL&nbsp;v3.0.</p>
+      </div>
+      <div class="about-art" data-reveal style="--delay:1">
+        <div class="art-frame">
+          <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Key art placeholder">
+            <defs>
+              <linearGradient id="art-grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#2e2648"/>
+                <stop offset="100%" stop-color="#1a1428"/>
+              </linearGradient>
+              <radialGradient id="art-glow" cx="50%" cy="40%">
+                <stop offset="0%" stop-color="rgba(114,9,183,0.15)"/>
+                <stop offset="100%" stop-color="transparent"/>
+              </radialGradient>
+            </defs>
+            <rect width="400" height="500" fill="url(#art-grad)"/>
+            <rect width="400" height="500" fill="url(#art-glow)"/>
+            <text x="200" y="240" text-anchor="middle" fill="#d9d9d9" font-family="serif" font-size="18" opacity="0.4">Key Art</text>
+            <text x="200" y="268" text-anchor="middle" fill="#a09585" font-family="serif" font-size="13" opacity="0.3">Coming Soon</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true"></div>
+
+  <!-- ═══ FEATURES ═══ -->
+  <section class="features" id="features">
+    <div class="container">
+      <h2 class="heading" data-reveal>Features</h2>
+      <div class="features-grid">
+        <div class="feature-card" data-reveal style="--delay:0">
+          <div class="feature-icon"><i class="ra ra-hood" aria-hidden="true"></i></div>
+          <h3 class="feature-title">11 Wizard Archetypes</h3>
+          <p class="feature-text">From the Rune Caster to the Meteorologist. Yes, one of them even uses poop magic.</p>
+        </div>
+        <div class="feature-card" data-reveal style="--delay:1">
+          <div class="feature-icon"><i class="ra ra-burning-book" aria-hidden="true"></i></div>
+          <h3 class="feature-title">32 Spells &amp; Talent Trees</h3>
+          <p class="feature-text">9 talents per spell across 3 tiers. The math is fine. Trust the wizard.</p>
+        </div>
+        <div class="feature-card" data-reveal style="--delay:2">
+          <div class="feature-icon"><i class="ra ra-perspective-dice-random" aria-hidden="true"></i></div>
+          <h3 class="feature-title">Roguelite Campaign</h3>
+          <p class="feature-text">25 levels, seeded runs, and difficulty sliders. Blame the RNG.</p>
+        </div>
+        <div class="feature-card" data-reveal style="--delay:3">
+          <div class="feature-icon"><i class="ra ra-cycle" aria-hidden="true"></i></div>
+          <h3 class="feature-title">Endless Mode</h3>
+          <p class="feature-text">Infinitely scaling enemies. Infinitely scaling you. It gets ridiculous.</p>
+        </div>
+        <div class="feature-card" data-reveal style="--delay:4">
+          <div class="feature-icon"><i class="ra ra-dragon" aria-hidden="true"></i></div>
+          <h3 class="feature-title">Boss Fights</h3>
+          <p class="feature-text">Ogre, Lich, Hags, and Dark Mage. They all want you dead. Specifically.</p>
+        </div>
+        <div class="feature-card" data-reveal style="--delay:5">
+          <div class="feature-icon"><i class="ra ra-double-team" aria-hidden="true"></i></div>
+          <h3 class="feature-title">Multiplayer Versus</h3>
+          <p class="feature-text">Peer-to-peer PvP. Bring a friend. Destroy their kingdom instead.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true"></div>
+
+  <!-- ═══ WIZARDS SHOWCASE ═══ -->
+  <section class="wizards" id="wizards">
+    <div class="container">
+      <h2 class="heading" data-reveal>Choose Your Wizard</h2>
+      <p class="wizards-tease" data-reveal style="--delay:0">3 revealed. 8 locked. One of them definitely uses poop magic.</p>
+      <div class="wizards-grid">
+
+        <div class="wizard-card" data-reveal style="--delay:0; --accent:#c9a84c">
+          <div class="wizard-portrait">
+            <i class="ra ra-crystal-ball" aria-hidden="true"></i>
+          </div>
+          <h3 class="wizard-name">Boring Ole Mage</h3>
+          <p class="wizard-flavor">Sometimes boring is best.</p>
+        </div>
+
+        <div class="wizard-card" data-reveal style="--delay:1; --accent:#b44d1e">
+          <div class="wizard-portrait">
+            <i class="ra ra-perspective-dice-random" aria-hidden="true"></i>
+          </div>
+          <h3 class="wizard-name">Randomancer</h3>
+          <p class="wizard-flavor">You don't choose the spell. The spell chooses you.</p>
+        </div>
+
+        <div class="wizard-card" data-reveal style="--delay:2; --accent:#1a7a6e">
+          <div class="wizard-portrait">
+            <i class="ra ra-energise" aria-hidden="true"></i>
+          </div>
+          <h3 class="wizard-name">Arcanorouter</h3>
+          <p class="wizard-flavor">Geordi would be proud of your power routing.</p>
+        </div>
+
+        <div class="wizard-card wizard-card--locked" data-reveal style="--delay:3; --accent:#8b6914">
+          <div class="wizard-portrait wizard-portrait--locked">
+            <i class="ra ra-turd" aria-hidden="true"></i>
+          </div>
+          <h3 class="wizard-name wizard-name--locked">???</h3>
+          <p class="wizard-flavor">Something smells off...</p>
+        </div>
+
+        <div class="wizard-card wizard-card--locked" data-reveal style="--delay:4; --accent:#8b1a1a">
+          <div class="wizard-portrait wizard-portrait--locked">
+            <i class="ra ra-revolver" aria-hidden="true"></i>
+          </div>
+          <h3 class="wizard-name wizard-name--locked">???</h3>
+          <p class="wizard-flavor">Spells? Where you're going, you don't need spells.</p>
+        </div>
+
+        <div class="wizard-card wizard-card--locked" data-reveal style="--delay:5; --accent:#b44d1e">
+          <div class="wizard-portrait wizard-portrait--locked">
+            <i class="ra ra-sword" aria-hidden="true"></i>
+          </div>
+          <h3 class="wizard-name wizard-name--locked">???</h3>
+          <p class="wizard-flavor">Some wizards prefer a more... hands-on approach.</p>
+        </div>
+
+        <div class="wizard-card wizard-card--locked" data-reveal style="--delay:6; --accent:#1e7a3e">
+          <div class="wizard-portrait wizard-portrait--locked">
+            <i class="ra ra-fizzing-flask" aria-hidden="true"></i>
+          </div>
+          <h3 class="wizard-name wizard-name--locked">???</h3>
+          <p class="wizard-flavor">The cauldron whispers to those who listen.</p>
+        </div>
+
+        <div class="wizard-card wizard-card--locked" data-reveal style="--delay:7; --accent:#1e3a8e">
+          <div class="wizard-portrait wizard-portrait--locked">
+            <i class="ra ra-lightning-storm" aria-hidden="true"></i>
+          </div>
+          <h3 class="wizard-name wizard-name--locked">???</h3>
+          <p class="wizard-flavor">The sky darkens. Something is brewing up there.</p>
+        </div>
+
+        <div class="wizard-card wizard-card--locked" data-reveal style="--delay:8; --accent:#7b2d8e">
+          <div class="wizard-portrait wizard-portrait--locked">
+            <i class="ra ra-rune-stone" aria-hidden="true"></i>
+          </div>
+          <h3 class="wizard-name wizard-name--locked">???</h3>
+          <p class="wizard-flavor">Mysterious symbols. Mysterious results.</p>
+        </div>
+
+        <div class="wizard-card wizard-card--locked" data-reveal style="--delay:9; --accent:#a0a060">
+          <div class="wizard-portrait wizard-portrait--locked">
+            <i class="ra ra-sheep" aria-hidden="true"></i>
+          </div>
+          <h3 class="wizard-name wizard-name--locked">???</h3>
+          <p class="wizard-flavor">Violence is never the answer... right?</p>
+        </div>
+
+        <div class="wizard-card wizard-card--locked" data-reveal style="--delay:10; --accent:#8b1a1a">
+          <div class="wizard-portrait wizard-portrait--locked">
+            <i class="ra ra-burning-eye" aria-hidden="true"></i>
+          </div>
+          <h3 class="wizard-name wizard-name--locked">???</h3>
+          <p class="wizard-flavor">Some people just want to watch the world burn.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true"></div>
+
+  <!-- ═══ SCREENSHOTS ═══ -->
+  <section class="screenshots" id="screenshots">
+    <div class="container">
+      <h2 class="heading" data-reveal>Screenshots</h2>
+      <div class="screenshots-grid">
+        <a href="#shot-1" class="screenshot-slot" data-reveal style="--delay:0" aria-label="Screenshot 1">
+          <svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg"><rect width="640" height="360" fill="#231c38" rx="2"/><text x="320" y="172" text-anchor="middle" fill="#a09585" font-size="15">Screenshot 1</text><text x="320" y="198" text-anchor="middle" fill="#a09585" font-size="11" opacity="0.45">Coming Soon</text></svg>
+        </a>
+        <a href="#shot-2" class="screenshot-slot" data-reveal style="--delay:1" aria-label="Screenshot 2">
+          <svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg"><rect width="640" height="360" fill="#231c38" rx="2"/><text x="320" y="172" text-anchor="middle" fill="#a09585" font-size="15">Screenshot 2</text><text x="320" y="198" text-anchor="middle" fill="#a09585" font-size="11" opacity="0.45">Coming Soon</text></svg>
+        </a>
+        <a href="#shot-3" class="screenshot-slot" data-reveal style="--delay:2" aria-label="Screenshot 3">
+          <svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg"><rect width="640" height="360" fill="#231c38" rx="2"/><text x="320" y="172" text-anchor="middle" fill="#a09585" font-size="15">Screenshot 3</text><text x="320" y="198" text-anchor="middle" fill="#a09585" font-size="11" opacity="0.45">Coming Soon</text></svg>
+        </a>
+        <a href="#shot-4" class="screenshot-slot" data-reveal style="--delay:3" aria-label="Screenshot 4">
+          <svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg"><rect width="640" height="360" fill="#231c38" rx="2"/><text x="320" y="172" text-anchor="middle" fill="#a09585" font-size="15">Screenshot 4</text><text x="320" y="198" text-anchor="middle" fill="#a09585" font-size="11" opacity="0.45">Coming Soon</text></svg>
+        </a>
+        <a href="#shot-5" class="screenshot-slot" data-reveal style="--delay:4" aria-label="Screenshot 5">
+          <svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg"><rect width="640" height="360" fill="#231c38" rx="2"/><text x="320" y="172" text-anchor="middle" fill="#a09585" font-size="15">Screenshot 5</text><text x="320" y="198" text-anchor="middle" fill="#a09585" font-size="11" opacity="0.45">Coming Soon</text></svg>
+        </a>
+        <a href="#shot-6" class="screenshot-slot" data-reveal style="--delay:5" aria-label="Screenshot 6">
+          <svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg"><rect width="640" height="360" fill="#231c38" rx="2"/><text x="320" y="172" text-anchor="middle" fill="#a09585" font-size="15">Screenshot 6</text><text x="320" y="198" text-anchor="middle" fill="#a09585" font-size="11" opacity="0.45">Coming Soon</text></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- CSS-only lightbox overlays -->
+    <div id="shot-1" class="lightbox"><a href="#screenshots" class="lightbox-close" aria-label="Close">&times;</a><div class="lightbox-content"><svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg"><rect width="1280" height="720" fill="#231c38" rx="4"/><text x="640" y="360" text-anchor="middle" fill="#a09585" font-size="22">Screenshot 1 &mdash; Coming Soon</text></svg></div></div>
+    <div id="shot-2" class="lightbox"><a href="#screenshots" class="lightbox-close" aria-label="Close">&times;</a><div class="lightbox-content"><svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg"><rect width="1280" height="720" fill="#231c38" rx="4"/><text x="640" y="360" text-anchor="middle" fill="#a09585" font-size="22">Screenshot 2 &mdash; Coming Soon</text></svg></div></div>
+    <div id="shot-3" class="lightbox"><a href="#screenshots" class="lightbox-close" aria-label="Close">&times;</a><div class="lightbox-content"><svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg"><rect width="1280" height="720" fill="#231c38" rx="4"/><text x="640" y="360" text-anchor="middle" fill="#a09585" font-size="22">Screenshot 3 &mdash; Coming Soon</text></svg></div></div>
+    <div id="shot-4" class="lightbox"><a href="#screenshots" class="lightbox-close" aria-label="Close">&times;</a><div class="lightbox-content"><svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg"><rect width="1280" height="720" fill="#231c38" rx="4"/><text x="640" y="360" text-anchor="middle" fill="#a09585" font-size="22">Screenshot 4 &mdash; Coming Soon</text></svg></div></div>
+    <div id="shot-5" class="lightbox"><a href="#screenshots" class="lightbox-close" aria-label="Close">&times;</a><div class="lightbox-content"><svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg"><rect width="1280" height="720" fill="#231c38" rx="4"/><text x="640" y="360" text-anchor="middle" fill="#a09585" font-size="22">Screenshot 5 &mdash; Coming Soon</text></svg></div></div>
+    <div id="shot-6" class="lightbox"><a href="#screenshots" class="lightbox-close" aria-label="Close">&times;</a><div class="lightbox-content"><svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg"><rect width="1280" height="720" fill="#231c38" rx="4"/><text x="640" y="360" text-anchor="middle" fill="#a09585" font-size="22">Screenshot 6 &mdash; Coming Soon</text></svg></div></div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="site-footer" id="footer">
+    <div class="container footer-inner">
+      <div class="footer-text">
+        <div class="footer-links">
+          <a href="#" class="footer-link"><i class="ra ra-fire" aria-hidden="true"></i> Steam</a>
+          <span class="footer-dot" aria-hidden="true">&middot;</span>
+          <a href="#" class="footer-link"><i class="ra ra-forging" aria-hidden="true"></i> GitHub</a>
+        </div>
+        <p class="footer-copy">&copy; 2026 Blackhearth Games. All rights reserved.</p>
+      </div>
+      <a href="#" class="footer-brand" aria-label="Blackhearth Games">
+        <img class="footer-logo" src="images/studio.png" alt="Blackhearth Games">
+      </a>
+    </div>
+  </footer>
+
+  </div><!-- /.page-content -->
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
