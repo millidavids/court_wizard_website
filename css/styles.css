@@ -58,9 +58,9 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   font-weight: 400;
-  line-height: 2.1;
+  line-height: 2.2;
   color: var(--text-body);
   background: var(--abyss);
   overflow-x: hidden;
@@ -184,7 +184,7 @@ body::before {
   color: var(--abyss);
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   padding: 0.5rem 1.5rem;
   border-radius: 0;
   z-index: 9999;
@@ -199,7 +199,7 @@ body::before {
 /* ─── TYPOGRAPHY ─── */
 .heading {
   font-family: var(--font-heading);
-  font-size: clamp(0.85rem, 2.5vw, 1.3rem);
+  font-size: clamp(1rem, 2.8vw, 1.5rem);
   color: var(--gold);
   text-align: center;
   letter-spacing: 0.04em;
@@ -237,7 +237,7 @@ body::before {
   padding: 1rem 0;
   color: var(--gold);
   font-family: var(--font-pixel);
-  font-size: 0.35rem;
+  font-size: 0.45rem;
   letter-spacing: 0.5em;
   opacity: 0.3;
   user-select: none;
@@ -303,7 +303,7 @@ body::before {
 
 .nav-logo {
   font-family: var(--font-display);
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   color: var(--gold);
   letter-spacing: 0.04em;
   white-space: nowrap;
@@ -318,7 +318,7 @@ body::before {
 
 .nav-links a {
   font-family: var(--font-pixel);
-  font-size: 0.55rem;
+  font-size: 0.65rem;
   color: var(--text-body);
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -420,7 +420,7 @@ body::before {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(1.4rem, 5vw, 2.8rem);
+  font-size: clamp(1.4rem, 6vw, 3.5rem);
   color: #fff;
   letter-spacing: 0.06em;
   line-height: 1.2;
@@ -446,7 +446,7 @@ body::before {
 
 /* Decorative rule between title and tagline */
 .hero-rule {
-  width: 180px;
+  width: 220px;
   height: 1px;
   margin: 1.75rem auto;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
@@ -468,7 +468,7 @@ body::before {
 
 .hero-tagline {
   font-family: var(--font-heading);
-  font-size: clamp(0.45rem, 1.4vw, 0.65rem);
+  font-size: clamp(0.55rem, 1.6vw, 0.85rem);
   color: var(--text-bright);
   margin-bottom: 0.75rem;
   letter-spacing: 0.04em;
@@ -476,10 +476,10 @@ body::before {
 
 .hero-quip {
   font-family: var(--font-pixel);
-  font-size: clamp(0.4rem, 1.2vw, 0.55rem);
+  font-size: clamp(0.5rem, 1.3vw, 0.7rem);
   color: var(--gold);
   opacity: 0.5;
-  margin-bottom: 2.75rem;
+  margin-bottom: 3rem;
   letter-spacing: 0.04em;
 }
 
@@ -496,7 +496,7 @@ body::before {
   align-items: center;
   gap: 0.6rem;
   font-family: var(--font-pixel);
-  font-size: 0.55rem;
+  font-size: 0.65rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   padding: 1rem 2rem;
@@ -544,8 +544,8 @@ body::before {
   background: hsla(270, 15%, 35%, 0.9);
   color: var(--text-bright);
   font-family: var(--font-pixel);
-  font-size: 0.35rem;
-  padding: 3px 6px;
+  font-size: 0.4rem;
+  padding: 3px 7px;
   border-radius: 0;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -622,8 +622,8 @@ body::before {
 
 .about-text p {
   margin-bottom: 1.4rem;
-  line-height: 2.2;
-  font-size: 0.55rem;
+  line-height: 2.4;
+  font-size: 0.65rem;
 }
 .about-text p:last-child { margin-bottom: 0; }
 .about-text strong { color: #1a0e08; }
@@ -725,7 +725,7 @@ body::before {
 
 .feature-title {
   font-family: var(--font-pixel);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--gold);
   margin-bottom: 0.85rem;
   letter-spacing: 0.02em;
@@ -733,7 +733,7 @@ body::before {
 }
 
 .feature-text {
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   color: var(--text-body);
   line-height: 2.0;
 }
@@ -748,7 +748,7 @@ body::before {
 
 .wizards-tease {
   font-family: var(--font-pixel);
-  font-size: 0.45rem;
+  font-size: 0.55rem;
   color: var(--text-muted);
   text-align: center;
   margin-top: -2.5rem;
@@ -828,7 +828,7 @@ body::before {
 
 .wizard-name {
   font-family: var(--font-pixel);
-  font-size: 0.55rem;
+  font-size: 0.65rem;
   color: var(--gold);
   padding: 1rem 1rem 0.35rem;
   letter-spacing: 0.01em;
@@ -836,7 +836,7 @@ body::before {
 }
 
 .wizard-flavor {
-  font-size: 0.45rem;
+  font-size: 0.55rem;
   color: var(--text-body);
   padding: 0 0.75rem 1.25rem;
   line-height: 1.8;
@@ -856,7 +856,7 @@ body::before {
 
 .wizard-name--locked {
   color: var(--text-muted);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   letter-spacing: 0.15em;
 }
 
@@ -986,7 +986,7 @@ body::before {
 
 .footer-link {
   font-family: var(--font-pixel);
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   color: var(--text-body);
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -1007,7 +1007,7 @@ body::before {
 
 .footer-copy {
   font-family: var(--font-pixel);
-  font-size: 0.35rem;
+  font-size: 0.45rem;
   color: var(--text-muted);
   margin-top: 0.5rem;
   letter-spacing: 0.02em;
