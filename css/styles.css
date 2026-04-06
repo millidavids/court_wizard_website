@@ -968,8 +968,6 @@ body::before {
 .footer-logo {
   width: 280px;
   height: auto;
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
   opacity: 0.6;
   transition: opacity 0.3s ease;
 }
