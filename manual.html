@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Court Wizard — Manual</title>
+  <meta name="description" content="How to play Court Wizard: controls, casting styles, mana management, cauldron brewing, and tactical tips.">
+  <meta name="theme-color" content="#1a1428">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=MedievalSharp&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/rpg-awesome@0.2.0/css/rpg-awesome.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.className='js'</script>
+</head>
+<body>
+
+  <div class="parallax" aria-hidden="true">
+    <div class="parallax-layer parallax-skybox"></div>
+    <div class="parallax-layer parallax-bg"></div>
+    <div class="parallax-layer parallax-fg"></div>
+  </div>
+
+  <div class="page-darken" aria-hidden="true"></div>
+
+  <div class="page-content">
+
+  <a href="#overview" class="skip-link">Skip to content</a>
+
+  <nav class="nav" id="top">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Court Wizard</a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu">
+      <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span></span></label>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#wizards">Wizards</a></li>
+        <li><a href="manual.html" aria-current="page">Manual</a></li>
+        <li><a href="changelog.html">Changelog</a></li>
+        <li><a href="credits.html">Credits</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="manual-hero">
+    <div class="container">
+      <h1 class="manual-hero-title">Manual</h1>
+      <div class="hero-rule" aria-hidden="true"></div>
+      <p class="manual-hero-tagline">How to play Court Wizard</p>
+    </div>
+  </header>
+
+  <main class="container manual-main">
+
+    <aside class="manual-toc" data-reveal aria-label="Table of contents">
+      <h2 class="manual-toc-title">Contents</h2>
+      <ol class="manual-toc-list">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#controls">Controls</a></li>
+        <li><a href="#spell-book">Spell Book</a></li>
+        <li><a href="#action-bar">Action Bar</a></li>
+        <li><a href="#casting-styles">Casting Styles</a></li>
+        <li><a href="#mana">Mana Management</a></li>
+        <li><a href="#concentration">Concentration</a></li>
+        <li><a href="#cauldron">Cauldron Brewing</a></li>
+        <li><a href="#progression">Research &amp; Progression</a></li>
+        <li><a href="#wizard-types">Wizard Types</a></li>
+        <li><a href="#tips">Tactical Tips</a></li>
+      </ol>
+    </aside>
+
+    <div class="manual-sections">
+
+      <section class="manual-section parchment" id="overview" data-reveal>
+        <h2 class="heading heading--dark"><i class="ra ra-crystal-ball" aria-hidden="true"></i> Overview</h2>
+        <p>You are the Court Wizard. Defend the castle from waves of incoming enemies by casting spells. Keep the king alive and eliminate all attackers to advance to the next wave. Each wave brings more and stronger enemies.</p>
+        <p>You stand atop your tower with the full arcane arsenal at your disposal — but mana is finite, enemies are many, and the king is a bit of a worrier. Choose your spells carefully, time your casts, and don't forget to brew a potion or two between the chaos.</p>
+      </section>
+
+      <section class="manual-section parchment" id="controls" data-reveal>
+        <h2 class="heading heading--dark"><i class="ra ra-gamepad-cross" aria-hidden="true"></i> Controls</h2>
+        <dl class="manual-controls-table">
+          <dt>Mouse</dt><dd>Aim spells and interact with UI</dd>
+          <dt>Left Click</dt><dd>Cast spells (hold to channel)</dd>
+          <dt>Escape</dt><dd>Pause game / open spell book</dd>
+          <dt>Keys 1&ndash;5</dt><dd>Quick-cast spells from your action bar (most wizards)</dd>
+          <dt>Q W E R</dt><dd>Alternate action bar used by some wizard types</dd>
+          <dt>A S D F</dt><dd>Alternate action bar used by some wizard types</dd>
+        </dl>
+      </section>
+
+      <section class="manual-section parchment" id="spell-book" data-reveal>
+        <h2 class="heading heading--dark"><i class="ra ra-burning-book" aria-hidden="true"></i> Spell Book</h2>
+        <p>Press Escape or click the spell button in the top-left to open the spell book. Spells are organized into four categories: <strong>Offense</strong>, <strong>Control</strong>, <strong>Support</strong>, and <strong>Utility</strong>. Click a spell to see its description, then click Select to prime it for casting. You can also assign spells to action bar slots (1&ndash;5) from the spell book.</p>
+      </section>
+
+      <section class="manual-section parchment" id="action-bar" data-reveal>
+        <h2 class="heading heading--dark"><i class="ra ra-hand" aria-hidden="true"></i> Action Bar</h2>
+        <p>The action bar at the bottom-left shows your 5 quick-cast slots. Press keys 1&ndash;5 anytime to instantly prime that spell. To assign a spell, open the spell book and press a number key while hovering over a spell.</p>
+      </section>
+
+      <section class="manual-section parchment" id="casting-styles" data-reveal>
+        <h2 class="heading heading--dark"><i class="ra ra-lightning-bolt" aria-hidden="true"></i> Casting Styles</h2>
+        <p>Different spells have different casting styles:</p>
+        <ul class="manual-list">
+          <li><strong>Click spells</strong> — Click once to fire. <em>(Magic Missile, Dispel)</em></li>
+          <li><strong>Hold spells</strong> — Hold the mouse button to channel. <em>(Disintegrate, Finger of Death)</em></li>
+          <li><strong>Placed spells</strong> — Hold to charge, release to place. <em>(Guardian Circle, Entangle, Sleep)</em></li>
+          <li><strong>Drag spells</strong> — Click and drag to draw a line. <em>(Wall of Dirt, Wall of Fire)</em></li>
+          <li><strong>Concentration spells</strong> — Persist until cancelled. <em>(Squall, Meteor Fall)</em></li>
+        </ul>
+      </section>
+
+      <section class="manual-section parchment" id="mana" data-reveal>
+        <h2 class="heading heading--dark"><i class="ra ra-diamond" aria-hidden="true"></i> Mana Management</h2>
+        <ul class="manual-list">
+          <li>Each spell costs mana to cast.</li>
+          <li>Mana regenerates over time.</li>
+          <li>Watch your mana bar to ensure you can cast.</li>
+          <li>Some powerful spells require full or near-full mana.</li>
+        </ul>
+      </section>
+
+      <section class="manual-section parchment" id="concentration" data-reveal>
+        <h2 class="heading heading--dark"><i class="ra ra-meditation" aria-hidden="true"></i> Concentration</h2>
+        <p>Concentration spells remain active until you end them. While concentrating, the spell's mana cost is reserved &mdash; your mana won't regenerate past the reserved amount. You can concentrate on multiple spells at once, but each one reserves more mana. Click the cancel buttons on the right side of the screen to end individual concentration spells and free up your mana.</p>
+      </section>
+
+      <section class="manual-section parchment" id="cauldron" data-reveal>
+        <h2 class="heading heading--dark"><i class="ra ra-fizzing-flask" aria-hidden="true"></i> Cauldron Brewing</h2>
+        <p>The cauldron lets you brew potions from ingredients dropped by defeated enemies. Click the cauldron icon to open the brewing menu. Toggle ingredients on or off, preview the effects, and click Brew. Your wizard can't cast spells while brewing. Mixing multiple ingredients dilutes each effect, so choose carefully.</p>
+      </section>
+
+      <section class="manual-section parchment" id="progression" data-reveal>
+        <h2 class="heading heading--dark"><i class="ra ra-scroll-unfurled" aria-hidden="true"></i> Research &amp; Progression</h2>
+        <p>Defeating enemies earns <strong>Arcane Insight</strong>, which you spend at the Wizard's Tower to research new spells. Spells are organized in research chains &mdash; unlock earlier spells to access more powerful ones. Some spells require a minimum number of total spells researched.</p>
+      </section>
+
+      <section class="manual-section parchment" id="wizard-types" data-reveal>
+        <h2 class="heading heading--dark"><i class="ra ra-hood" aria-hidden="true"></i> Wizard Types</h2>
+        <p>Different wizard types offer unique playstyles. Unlock new wizard types by completing achievements.</p>
+        <div class="manual-wizard-grid">
+          <div class="manual-wizard">
+            <i class="ra ra-crystal-ball" aria-hidden="true"></i>
+            <h3>Boring Ole Mage</h3>
+            <p>Sometimes boring is best.</p>
+          </div>
+          <div class="manual-wizard">
+            <i class="ra ra-perspective-dice-random" aria-hidden="true"></i>
+            <h3>Randomancer</h3>
+            <p>You don't choose the spell. The spell chooses you.</p>
+          </div>
+          <div class="manual-wizard">
+            <i class="ra ra-energise" aria-hidden="true"></i>
+            <h3>Arcanorouter</h3>
+            <p>Geordi would be proud of your power routing.</p>
+          </div>
+          <div class="manual-wizard manual-wizard--locked">
+            <i class="ra ra-padlock" aria-hidden="true"></i>
+            <h3>???</h3>
+            <p>Eight more wizards remain locked. Earn achievements to unlock them.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="manual-section parchment" id="tips" data-reveal>
+        <h2 class="heading heading--dark"><i class="ra ra-aura" aria-hidden="true"></i> Tactical Tips</h2>
+        <ul class="manual-list">
+          <li>Position walls and fire strategically to funnel enemies into kill zones.</li>
+          <li>Teleport can reposition both enemies and allies.</li>
+          <li>Guardian Circle gives temporary HP that can save units from death.</li>
+          <li>Use Telekinesis to collect ingredient drops from across the battlefield.</li>
+          <li>Combine Grease with fire spells for devastating explosions.</li>
+          <li>Black Hole pulls enemies into a growing vortex.</li>
+          <li>Brew potions between waves for maximum effect.</li>
+        </ul>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" id="footer">
+    <div class="container footer-inner">
+      <div class="footer-text">
+        <div class="footer-links">
+          <a href="index.html" class="footer-link"><i class="ra ra-hood" aria-hidden="true"></i> Home</a>
+          <span class="footer-dot" aria-hidden="true">&middot;</span>
+          <a href="changelog.html" class="footer-link"><i class="ra ra-scroll-unfurled" aria-hidden="true"></i> Changelog</a>
+          <span class="footer-dot" aria-hidden="true">&middot;</span>
+          <a href="credits.html" class="footer-link"><i class="ra ra-quill-ink" aria-hidden="true"></i> Credits</a>
+        </div>
+        <p class="footer-copy">&copy; 2026 Blackhearth Games. All rights reserved.</p>
+      </div>
+      <a href="https://blackhearthgames.com" class="footer-brand" aria-label="Blackhearth Games" target="_blank" rel="noopener">
+        <img class="footer-logo" src="images/blackhearth_logo.svg" alt="Blackhearth Games">
+      </a>
+    </div>
+  </footer>
+
+  </div><!-- /.page-content -->
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
