@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Syncs player-facing markdown files from the game repo into the website's
-# content/ directory. Run whenever INSTRUCTIONS.md / CHANGELOG.md / CREDITS.md
-# change in the game repo (typically as part of a release).
+# content/ directory. Run whenever any of the mirrored markdown files change
+# in the game repo (typically as part of a release).
 #
 # Assumes the game repo is checked out at ../court_wizard relative to this repo.
 set -euo pipefail
@@ -16,7 +16,7 @@ fi
 
 mkdir -p "${REPO_ROOT}/content"
 
-for file in INSTRUCTIONS.md CHANGELOG.md CREDITS.md; do
+for file in INSTRUCTIONS.md CHANGELOG.md CREDITS.md HEALTH_WARNING.md PRIVACY_POLICY.md; do
   src="${GAME_REPO}/${file}"
   dst="${REPO_ROOT}/content/${file}"
   if [[ ! -f "${src}" ]]; then

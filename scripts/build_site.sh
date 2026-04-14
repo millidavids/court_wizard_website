@@ -16,6 +16,8 @@ cp -r \
   manual.html \
   changelog.html \
   credits.html \
+  health.html \
+  privacy.html \
   css \
   js \
   images \
