@@ -17,7 +17,7 @@ fi
 mkdir -p "${REPO_ROOT}/content"
 
 for file in INSTRUCTIONS.md CHANGELOG.md CREDITS.md HEALTH_WARNING.md PRIVACY_POLICY.md; do
-  src="${GAME_REPO}/${file}"
+  src="${GAME_REPO}/docs/${file}"
   dst="${REPO_ROOT}/content/${file}"
   if [[ ! -f "${src}" ]]; then
     echo "error: ${src} not found" >&2
