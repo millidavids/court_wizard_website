@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.8.71] - 2026-06-01
+
+### Fixed
+- **Mind Control now works for the joining player** — as the second player you couldn't take over any of the host's units at all. You can now mind-control them just like the host can.
+- **Mind-controlled units now turn on their old allies** — a controlled unit used to just keep marching along with its army. It now actively chases down and attacks the units it used to fight alongside, on both players' screens.
+- **Polymorph now works in multiplayer** — when you turn an enemy into a sheep, the sheep now appears on the other player's screen too. And when your opponent polymorphs one of your units, it now properly becomes a harmless sheep instead of carrying on fighting.
+- **Entangle now actually holds enemies for the joining player** — casting Entangle as the second player showed the vines but the enemies kept walking around. The roots now pin them in place like they should.
+- **Raised undead now look and fight right in multiplayer** — units brought back with Raise the Dead now show the proper undead look on both screens (instead of looking like living soldiers or staying as corpses), are on the undead side, and attack both armies. Their lingering plague and explosion effects now harm every nearby living unit, not just one side.
+- **Shooting an Arcane Crystal with a Fireball no longer melts the game** — hitting a crystal with a fireball could spray out thousands of fireballs and grind everything to a crawl. The crystal now sends out the right small handful instead.
+- **The King's health bar now works in multiplayer** — the bar that tracks your King's health sat empty during multiplayer matches. It now fills and drains correctly, with each player seeing their own King's health.
+- **Battle Hymn and other speed buffs no longer make units one-shot the enemy** — a unit under an attack-speed boost (Battle Hymn, Haste, and similar) was swinging many times per second and instantly deleting whatever it hit. Speed buffs now raise attack rate by the intended amount.
+
 ## [v0.8.67] - 2026-06-01
 
 ### Changed
