@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.10.10] - 2026-06-10
+
+### Added
+- **New Co-op mode** — invite a friend to fight alongside you. A second wizard joins your Endless and Roguelite battles on the castle wall, with their own spellbook and brewing cauldron, and you both defend the same king against the same waves. Your potion boosts stack, and the things you do together count toward each of your own progress and achievements.
+- **"Connected" badge in the Wizard Tower** — a small green badge at the top shows when a friend is connected, with their name when you're playing through Steam.
+
+### Changed
+- **Reorganized the Wizard Tower's multiplayer screens** — the Multiplayer tab is now just the connection screen, there's a separate **VS** tab for head-to-head duels that unlocks once you're connected, and the Study button is set off to the side.
+- **The host now sets up co-op for both players** — once a friend joins, the host picks what to play (Endless, Roguelite, or a VS duel) while the friend stays on one multiplayer screen that mirrors the host's choice, shows the level or run about to start, and lets them pick a wizard and hit Ready. The host's start button waits, showing "Guest Not Ready," until the friend readies up — and the host never has to ready themselves.
+- **Enemies hit a little harder in co-op** — while a partner is helping you in an Endless or Roguelite battle, the attackers fight more effectively. The boost lifts the moment your partner leaves.
+- **Co-op battles keep going if your partner drops** — if your friend disconnects mid-battle, the fight continues on your own and they can rejoin at the next level. (Head-to-head duels still end when someone disconnects.)
+- **Your battles remember when you played with a friend** — Endless levels and Roguelite runs now record whether you played co-op, and who with.
+- **The partner wizard stands in a clearer spot** — in co-op, the joining player's wizard now stands further back along the wall so both wizards and the shared cauldron read cleanly.
+- **Pausing in co-op now pauses for both players** — when either player opens the pause menu, the game stops for both and the other player sees the menu pop up too. Only the player who paused can resume; the other sees a grayed-out button that says "Waiting for other player." Opening your spell book or brewing cauldron does not pause a co-op game, and if the Urgent run modifier is on, the game keeps running for everyone.
+
+### Fixed
+- **Finger of Death looks right in multiplayer** — on the other player's screen it now grows into its proper cone shape as it charges, instead of appearing as a static tube.
+- **Backing out of hosting cleans up properly** — if you choose Host Game and then leave the multiplayer screens before a friend joins, the connection is now fully closed and reset. A fresh connection code is only created when you choose Host Game again, so there are no leftover open connections.
+
 ## [v0.9.2] - 2026-06-04
 
 ### Added
