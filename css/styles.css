@@ -241,6 +241,8 @@ body::before {
   margin-right: auto;
   line-height: 1.2;
 }
+.cw-title a { color: inherit; text-decoration: none; }
+.cw-title a:hover, .cw-title a:focus-visible { color: var(--purple-bright); }
 .cw-header__actions {
   display: flex;
   align-items: center;
@@ -430,14 +432,25 @@ html.no-js .cw-theme-toggle { display: none; }   /* toggle needs JS */
   border-top: 1px solid var(--item-border);
 }
 
-/* Screenshot thumbnail summaries */
-.cw-entry__thumb {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  border-radius: 2px;
+/* Screenshots gallery — images shown inline as a grid (no click-to-detail) */
+.cw-shots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
 }
-.cw-entry--shot .cw-entry__row { flex-direction: column; align-items: stretch; gap: 0.45rem; }
+.cw-shot { margin: 0; }
+.cw-shot img {
+  width: 100%;
+  display: block;
+  border: 1px solid var(--item-border);
+  border-radius: 4px;
+}
+.cw-shot figcaption {
+  font-size: clamp(0.55rem, 0.85vw, 0.72rem);
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-top: 0.5rem;
+}
 
 /* ── Detail body — shared by the side panel AND inline <details> bodies ── */
 .cw-detail__icon {
@@ -486,12 +499,6 @@ html.no-js .cw-theme-toggle { display: none; }   /* toggle needs JS */
   color: var(--text-locked);
   margin-top: 0.9rem;
   line-height: 1.9;
-}
-.cw-detail__img {
-  width: 100%;
-  border: 1px solid var(--frame-border);
-  border-radius: 4px;
-  margin-bottom: 0.8rem;
 }
 
 /* ── Dark markdown prose (changelog detail + legal pages) ── */
@@ -567,6 +574,7 @@ html.no-js .cw-theme-toggle { display: none; }   /* toggle needs JS */
 .cw-detail__body,
 .cw-detail__flavor,
 .cw-detail__placeholder,
+.cw-shot figcaption,
 .cw-prose {
   transform: scaleX(0.82);
   transform-origin: left;
@@ -614,6 +622,8 @@ html.js[data-tab="changelog"]   #changelog { display: block; }
     overflow-y: auto;
     scroll-behavior: smooth;
   }
+  /* Screenshots is a gallery with nothing to select → give it the full width */
+  html.js[data-tab="screenshots"] .cw-frame--app .cw-detail { display: none; }
   /* In wide JS mode the inline detail bodies never show — they're cloned
      into the side panel instead. The UA already hides :not([open]); JS also
      keeps entries closed. Guard against a stray open from a prior resize. */
