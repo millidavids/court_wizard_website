@@ -247,6 +247,38 @@ body::before {
   gap: 1rem;
 }
 
+/* Light/dark toggle — 3D pressable like the other buttons */
+.cw-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: none;
+  border: 1px solid var(--tab-border);
+  border-radius: 6px;
+  background: var(--tab-bg);
+  color: var(--text-primary);
+  cursor: pointer;
+  transform: translateY(0);
+  box-shadow: 0 7px 0 0 var(--btn-edge);
+  transition: transform 0.1s ease, box-shadow 0.1s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.cw-theme-toggle:hover, .cw-theme-toggle:focus-visible {
+  border-color: var(--purple-bright);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 0 0 var(--btn-edge);
+}
+.cw-theme-toggle:active {
+  transform: translateY(7px);
+  box-shadow: 0 0 0 0 var(--btn-edge);
+}
+.cw-theme-toggle svg { width: 1.15rem; height: 1.15rem; }
+.cw-icon-moon { display: none; }
+html[data-theme="light"] .cw-icon-sun  { display: none; }
+html[data-theme="light"] .cw-icon-moon { display: inline; }
+html.no-js .cw-theme-toggle { display: none; }   /* toggle needs JS */
+
 /* ── Main: detail panel (left) + right column (tabs + content) ── */
 .cw-main {
   display: flex;
@@ -625,6 +657,75 @@ html.js[data-tab="changelog"]   #changelog { display: block; }
   transform: translateY(7px);
   box-shadow: 0 0 0 0 var(--btn-edge);
 }
+
+
+/* ════════════════════════════════════════════
+   LIGHT THEME
+   Re-skins the token palette to a warm parchment/light-stone look while
+   keeping the purple + gold accents. The dark parallax art stays but gets a
+   light wash (and a gentle brightness lift) so it reads as a bright scene.
+   ════════════════════════════════════════════ */
+html[data-theme="light"] {
+  /* Translucent like dark mode so the parallax shows through; the frame's
+     backdrop blur (below) keeps text readable over it. */
+  --frame-bg:          hsla(40, 32%, 91%, 0.55);
+  --frame-border:      hsla(42, 48%, 44%, 0.75);
+  --frame-ring:        hsla(42, 52%, 50%, 0.7);
+  --frame-ring-solid:  hsla(42, 38%, 64%, 0.6);
+  --detail-bg:         hsla(40, 34%, 95%, 0.60);
+  --detail-border:     hsla(42, 44%, 48%, 0.8);
+  --content-bg:        hsla(40, 30%, 90%, 0.55);
+  --item-bg:           hsla(40, 34%, 95%, 0.62);
+  --item-border:       hsla(270, 20%, 70%, 0.55);
+  --tab-bg:            hsla(40, 28%, 88%, 0.62);
+  --tab-border:        hsla(270, 24%, 66%, 0.6);
+  --tab-active-bg:     hsla(270, 48%, 90%, 0.70);
+  --purple:            hsla(270, 55%, 50%, 0.95);
+  --purple-bright:     hsla(270, 62%, 48%, 1);
+  --purple-glow:       hsla(270, 58%, 55%, 0.32);
+  --btn-edge:          hsla(270, 24%, 60%, 0.9);
+
+  --text-primary:      hsla(265, 32%, 20%, 1);
+  --text-body:         hsla(265, 18%, 28%, 1);
+  --text-muted:        hsla(265, 12%, 42%, 1);
+  --text-locked:       hsla(265, 9%, 52%, 1);
+
+  --gold:              hsla(38, 68%, 37%, 1);
+  --gold-bright:       hsla(38, 72%, 44%, 1);
+  --cat-offense:       hsla(25, 70%, 43%, 1);
+  --cat-control:       hsla(270, 55%, 50%, 1);
+  --cat-support:       hsla(210, 62%, 43%, 1);
+  --cat-utility:       hsla(110, 45%, 33%, 1);
+
+  --bg-deep:           #ded5c4;
+
+  --sb-track:          hsla(40, 22%, 82%, 0.7);
+  --sb-thumb:          hsla(270, 40%, 58%, 0.9);
+}
+
+/* Light mode leaves the parallax background untouched — no page wash, no
+   filter. Only the card and its contents are re-themed. */
+html[data-theme="light"] .page-darken { display: none; }
+
+/* Frosted glass on the card itself: blur the parallax behind the frame so the
+   translucent light panels stay readable while the scene still shows through. */
+html[data-theme="light"] .cw-frame {
+  backdrop-filter: blur(10px) saturate(1.05);
+  -webkit-backdrop-filter: blur(10px) saturate(1.05);
+}
+
+/* Fix the few hard-coded dark-theme colors for light */
+html[data-theme="light"] .btn { background: hsla(270, 45%, 90%, 0.92); }
+html[data-theme="light"] .btn:hover,
+html[data-theme="light"] .btn:focus-visible,
+html[data-theme="light"] .cw-tab:hover,
+html[data-theme="light"] .cw-tab:focus-visible { color: var(--text-primary); }
+html[data-theme="light"] .cw-entry:hover { border-color: hsla(270, 35%, 55%, 0.85); }
+html[data-theme="light"] .cw-title { text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.55); }
+html[data-theme="light"] .cw-section__head { text-shadow: none; }
+html[data-theme="light"] .cw-prose code { background: hsla(270, 30%, 86%, 0.7); }
+html[data-theme="light"] .cw-prose pre  { background: hsla(270, 24%, 88%, 0.7); }
+html[data-theme="light"] .cw-prose th   { background: hsla(270, 26%, 86%, 0.7); }
 
 
 /* ════════════════════════════════════════════

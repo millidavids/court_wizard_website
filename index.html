@@ -13,14 +13,19 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/rpg-awesome@0.2.0/css/rpg-awesome.min.css">
   <link rel="stylesheet" href="css/styles.css">
   <script>
-    // Progressive enhancement: flip to JS mode and pick the active tab from the
-    // hash BEFORE first paint, so the right section shows with no flash.
+    // Progressive enhancement: flip to JS mode, pick the active tab from the
+    // hash, and resolve the theme — all BEFORE first paint (no flash).
     (function () {
       var d = document.documentElement;
       d.className = 'js';
       var valid = ['about', 'features', 'wizards', 'screenshots', 'manual', 'changelog'];
       var t = (location.hash || '').slice(1);
       d.dataset.tab = valid.indexOf(t) !== -1 ? t : 'about';
+      try {
+        var st = localStorage.getItem('cw-theme');
+        d.dataset.theme = st ||
+          ((window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark');
+      } catch (e) { d.dataset.theme = 'dark'; }
     })();
   </script>
 </head>
@@ -43,6 +48,10 @@
     <header class="cw-header">
       <h1 class="cw-title">Court Wizard</h1>
       <div class="cw-header__actions">
+        <button class="cw-theme-toggle" type="button" aria-label="Switch theme" title="Switch theme">
+          <svg class="cw-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 1.5v2.5M12 20v2.5M3.2 3.2l1.8 1.8M19 19l1.8 1.8M1.5 12h2.5M20 12h2.5M3.2 20.8l1.8-1.8M19 5l1.8-1.8"/></svg>
+          <svg class="cw-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+        </button>
         <a class="btn btn--arcane" href="https://store.steampowered.com/app/4550880/Court_Wizard/" target="_blank" rel="noopener" aria-label="Wishlist Court Wizard on Steam">
           <i class="ra ra-fire" aria-hidden="true"></i> Wishlist on Steam
         </a>
@@ -176,12 +185,23 @@
           </details>
 
           <details class="cw-entry" id="feat-mp" data-entry>
-            <summary class="cw-entry__row"><i class="ra ra-double-team" aria-hidden="true"></i><span class="cw-entry__label">Multiplayer Versus</span></summary>
+            <summary class="cw-entry__row"><i class="ra ra-sword" aria-hidden="true"></i><span class="cw-entry__label">Multiplayer Versus</span></summary>
             <div class="cw-entry__detail">
-              <div class="cw-detail__icon"><i class="ra ra-double-team" aria-hidden="true"></i></div>
+              <div class="cw-detail__icon"><i class="ra ra-sword" aria-hidden="true"></i></div>
               <h3 class="cw-detail__title">Multiplayer Versus</h3>
               <p class="cw-detail__category cw-detail__category--control">Peer-to-peer PvP</p>
               <div class="cw-detail__body"><p>Bring a friend. Destroy their kingdom instead. Peer-to-peer versus battles, wizard against wizard.</p></div>
+            </div>
+          </details>
+
+          <details class="cw-entry" id="feat-coop" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-double-team" aria-hidden="true"></i><span class="cw-entry__label">Co-op Multiplayer</span></summary>
+            <div class="cw-entry__detail">
+              <div class="cw-detail__icon"><i class="ra ra-double-team" aria-hidden="true"></i></div>
+              <h3 class="cw-detail__title">Co-op Multiplayer</h3>
+              <p class="cw-detail__category cw-detail__category--support">Online &middot; Co-op</p>
+              <div class="cw-detail__body"><p>Connect to a fellow wizard and defend the kingdom together. Team up in both <strong>Endless</strong> and <strong>Roguelite</strong> modes &mdash; two wizards, one castle, twice the spells against the swarm.</p></div>
+              <p class="cw-detail__flavor">Two wizards are better than one. Usually.</p>
             </div>
           </details>
         </section>

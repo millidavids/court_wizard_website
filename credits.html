@@ -12,7 +12,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/rpg-awesome@0.2.0/css/rpg-awesome.min.css">
   <link rel="stylesheet" href="css/styles.css">
-  <script>document.documentElement.className = 'js';</script>
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.className = 'js';
+      try {
+        var st = localStorage.getItem('cw-theme');
+        d.dataset.theme = st ||
+          ((window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark');
+      } catch (e) { d.dataset.theme = 'dark'; }
+    })();
+  </script>
 </head>
 <body>
 
@@ -29,6 +39,10 @@
     <header class="cw-header">
       <h1 class="cw-title">Credits</h1>
       <div class="cw-header__actions">
+        <button class="cw-theme-toggle" type="button" aria-label="Switch theme" title="Switch theme">
+          <svg class="cw-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 1.5v2.5M12 20v2.5M3.2 3.2l1.8 1.8M19 19l1.8 1.8M1.5 12h2.5M20 12h2.5M3.2 20.8l1.8-1.8M19 5l1.8-1.8"/></svg>
+          <svg class="cw-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+        </button>
         <a class="cw-back" href="index.html"><i class="ra ra-return-arrow" aria-hidden="true"></i> Court Wizard</a>
         <a class="cw-brand" href="https://blackhearthgames.com" target="_blank" rel="noopener" aria-label="Blackhearth Games">
           <img src="images/blackhearth_logo.svg" alt="Blackhearth Games">
@@ -56,5 +70,6 @@
     </footer>
   </div>
 
+  <script src="js/main.js" defer></script>
 </body>
 </html>

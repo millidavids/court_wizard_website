@@ -111,4 +111,23 @@
 
   // ── Initial sync ──
   setTab(root.dataset.tab || fromHash() || 'about');
+
+  // ── Light/dark theme toggle (the inline <head> script sets the initial
+  //    theme before paint; this just handles clicks + persistence) ──
+  var themeBtn = document.querySelector('.cw-theme-toggle');
+  if (themeBtn) {
+    var syncThemeLabel = function () {
+      var isLight = root.dataset.theme === 'light';
+      var label = isLight ? 'Switch to dark theme' : 'Switch to light theme';
+      themeBtn.setAttribute('aria-label', label);
+      themeBtn.setAttribute('title', label);
+    };
+    syncThemeLabel();
+    themeBtn.addEventListener('click', function () {
+      var next = root.dataset.theme === 'light' ? 'dark' : 'light';
+      root.dataset.theme = next;
+      try { localStorage.setItem('cw-theme', next); } catch (e) {}
+      syncThemeLabel();
+    });
+  }
 })();
