@@ -9,6 +9,9 @@
 # Wrangler
 .wrangler/
 
+# Node
+node_modules/
+
 # Deploy artifacts
 _site/
 

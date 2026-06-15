@@ -1,0 +1,13 @@
+{
+  "name": "court-wizard-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static site for Court Wizard, styled after the in-game Compendium menu.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/render.mjs"
+  },
+  "devDependencies": {
+    "marked": "^12.0.0"
+  }
+}

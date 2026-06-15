@@ -9,12 +9,22 @@
   <link rel="icon" type="image/png" href="images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=MedievalSharp&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/rpg-awesome@0.2.0/css/rpg-awesome.min.css">
   <link rel="stylesheet" href="css/styles.css">
-  <script>document.documentElement.className='js'</script>
+  <script>
+    // Progressive enhancement: flip to JS mode and pick the active tab from the
+    // hash BEFORE first paint, so the right section shows with no flash.
+    (function () {
+      var d = document.documentElement;
+      d.className = 'js';
+      var valid = ['about', 'features', 'wizards', 'screenshots', 'manual', 'changelog'];
+      var t = (location.hash || '').slice(1);
+      d.dataset.tab = valid.indexOf(t) !== -1 ? t : 'about';
+    })();
+  </script>
 </head>
-<body>
+<body class="cw-app">
 
   <!-- ═══ PARALLAX BACKGROUND ═══ -->
   <div class="parallax" aria-hidden="true">
@@ -22,305 +32,512 @@
     <div class="parallax-layer parallax-bg"></div>
     <div class="parallax-layer parallax-fg"></div>
   </div>
-
-  <!-- Viewport-fixed gradient: bright at top, dark at bottom -->
   <div class="page-darken" aria-hidden="true"></div>
-
-  <div class="page-content">
 
   <a href="#about" class="skip-link">Skip to content</a>
 
-  <!-- ═══ SVG SPRITE ═══ -->
-  <svg class="svg-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <!-- Ornamental section divider -->
-      <symbol id="ornament" viewBox="0 0 400 24">
-        <line x1="20" y1="12" x2="168" y2="12" stroke="currentColor" stroke-width="0.5" opacity="0.25"/>
-        <circle cx="174" cy="12" r="1.5" fill="currentColor" opacity="0.3"/>
-        <path d="M186 3L200 12L214 3" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
-        <path d="M186 21L200 12L214 21" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
-        <circle cx="200" cy="12" r="2" fill="currentColor" opacity="0.25"/>
-        <circle cx="226" cy="12" r="1.5" fill="currentColor" opacity="0.3"/>
-        <line x1="232" y1="12" x2="380" y2="12" stroke="currentColor" stroke-width="0.5" opacity="0.25"/>
-        <circle cx="20" cy="12" r="1" fill="currentColor" opacity="0.15"/>
-        <circle cx="380" cy="12" r="1" fill="currentColor" opacity="0.15"/>
-      </symbol>
+  <!-- ═══ COMPENDIUM FRAME ═══ -->
+  <div class="cw-frame cw-frame--app">
 
-    </defs>
-  </svg>
-
-  <!-- ═══ NAVIGATION ═══ -->
-  <nav class="nav" id="top">
-    <div class="nav-inner">
-      <a href="#top" class="nav-logo">Court Wizard</a>
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu">
-      <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span></span></label>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#wizards">Wizards</a></li>
-        <li><a href="#screenshots">Screenshots</a></li>
-        <li><a href="manual.html">Manual</a></li>
-        <li><a href="changelog.html">Changelog</a></li>
-        <li><a href="credits.html">Credits</a></li>
-        <li><a href="health.html">Health</a></li>
-        <li><a href="privacy.html">Privacy</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- ═══ HERO ═══ -->
-  <header class="hero" id="hero">
-    <div class="hero-content">
-      <h1 class="hero-title">Court Wizard</h1>
-      <div class="hero-rule" aria-hidden="true"></div>
-      <p class="hero-tagline">Defend your kingdom with arcane power</p>
-      <p class="hero-quip">The king trusts you. Probably a mistake.</p>
-      <div class="hero-actions">
-        <a href="https://store.steampowered.com/app/4550880/Court_Wizard/" class="btn btn--arcane" target="_blank" rel="noopener" aria-label="Wishlist Court Wizard on Steam">
+    <!-- Header: title left, Wishlist CTA + studio logo right -->
+    <header class="cw-header">
+      <h1 class="cw-title">Court Wizard</h1>
+      <div class="cw-header__actions">
+        <a class="btn btn--arcane" href="https://store.steampowered.com/app/4550880/Court_Wizard/" target="_blank" rel="noopener" aria-label="Wishlist Court Wizard on Steam">
           <i class="ra ra-fire" aria-hidden="true"></i> Wishlist on Steam
         </a>
-        <a href="#" class="btn btn--gold" aria-label="View source on GitHub (coming soon)">
-          <i class="ra ra-scroll-unfurled" aria-hidden="true"></i> View Source
-        </a>
       </div>
-    </div>
-    <div class="hero-scroll" aria-hidden="true">
-      <div class="hero-scroll-line"></div>
-    </div>
-  </header>
+    </header>
 
-  <div class="divider" aria-hidden="true"></div>
+    <div class="cw-main">
 
-  <!-- ═══ ABOUT ═══ -->
-  <section class="about" id="about">
-    <div class="container about-grid">
-      <div class="about-text parchment" data-reveal>
-        <h2 class="heading heading--dark">The Story</h2>
-        <p>Court Wizard started as a hobby project &mdash; one developer learning Rust and game development from scratch. What began as a simple hobby with the Bevy engine grew into a potential business venture.</p>
-        <p>Built entirely in Rust, Court Wizard is a 2D/3D real-time strategy tower-ish defense game where you play as a powerful wizard defending your castle from relentless waves of attackers. Cast devastating spells from your tower, support your defenders, and master the arcane arts to protect your king.</p>
-        <p>Now the first title from <strong>Blackhearth Games</strong>, an indie studio born from the belief that a single developer with a little free time can build something that perhaps the rest of the world would enjoy. Open source. Made with passion for fantasy and magic. Licensed under GPL&nbsp;v3.0.</p>
+      <!-- LEFT: detail panel (wide JS only; populated on entry click) -->
+      <aside class="cw-detail" aria-live="polite">
+        <p class="cw-detail__placeholder">Select an entry to learn more.</p>
+      </aside>
+
+      <!-- RIGHT column: tab bar + scrollable content (lives in the right
+           column, above the list, exactly like the in-game compendium) -->
+      <div class="cw-right">
+
+        <nav class="cw-tabs" aria-label="Sections">
+          <a class="cw-tab" href="#about">About</a>
+          <a class="cw-tab" href="#features">Features</a>
+          <a class="cw-tab" href="#wizards">Wizards</a>
+          <a class="cw-tab" href="#screenshots">Screenshots</a>
+          <a class="cw-tab" href="#manual">Manual</a>
+          <a class="cw-tab" href="#changelog">Changelog</a>
+        </nav>
+
+        <!-- scrollable content; one section per tab -->
+        <div class="cw-content">
+
+        <!-- ═══ ABOUT ═══ -->
+        <section class="cw-section" id="about" aria-label="About">
+          <h2 class="cw-section__head">About</h2>
+          <p class="cw-section__intro">Defend your kingdom with arcane power. The king trusts you. Probably a mistake.</p>
+
+          <details class="cw-entry" id="abt-what" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-fairy-wand" aria-hidden="true"></i><span class="cw-entry__label">What is Court Wizard?</span></summary>
+            <div class="cw-entry__detail">
+              <div class="cw-detail__icon"><i class="ra ra-fairy-wand" aria-hidden="true"></i></div>
+              <h3 class="cw-detail__title">What is Court Wizard?</h3>
+              <p class="cw-detail__category">Real-time strategy &middot; Tower defense</p>
+              <div class="cw-detail__body">
+                <p>Court Wizard is a 2D/3D real-time strategy tower-ish defense game where you play as a powerful wizard defending your castle from relentless waves of attackers.</p>
+                <p>Cast devastating spells from your tower, support your defenders, and master the arcane arts to protect your king. Built entirely in Rust with the Bevy engine.</p>
+              </div>
+              <p class="cw-detail__flavor">The king trusts you. Probably a mistake.</p>
+            </div>
+          </details>
+
+          <details class="cw-entry" id="abt-studio" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-castle-flag" aria-hidden="true"></i><span class="cw-entry__label">Blackhearth Games</span></summary>
+            <div class="cw-entry__detail">
+              <div class="cw-detail__icon"><i class="ra ra-castle-flag" aria-hidden="true"></i></div>
+              <h3 class="cw-detail__title">Blackhearth Games</h3>
+              <p class="cw-detail__category">The studio</p>
+              <div class="cw-detail__body">
+                <p>Court Wizard started as a hobby project &mdash; one developer learning Rust and game development from scratch. What began as a simple hobby with the Bevy engine grew into a potential business venture.</p>
+                <p>It is now the first title from <strong>Blackhearth Games</strong>, an indie studio born from the belief that a single developer with a little free time can build something the rest of the world might enjoy.</p>
+              </div>
+              <p class="cw-detail__flavor">Made with passion for fantasy and magic.</p>
+            </div>
+          </details>
+
+          <details class="cw-entry" id="abt-open" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-scroll-unfurled" aria-hidden="true"></i><span class="cw-entry__label">Open Source &amp; License</span></summary>
+            <div class="cw-entry__detail">
+              <div class="cw-detail__icon"><i class="ra ra-scroll-unfurled" aria-hidden="true"></i></div>
+              <h3 class="cw-detail__title">Open Source &amp; License</h3>
+              <p class="cw-detail__category">GPL v3.0</p>
+              <div class="cw-detail__body">
+                <p>Court Wizard is open source and licensed under <strong>GPL&nbsp;v3.0</strong>. The whole game is built in Rust, in the open.</p>
+                <p>Wishlist on Steam to follow along, or browse the source when it goes public.</p>
+              </div>
+              <p class="cw-detail__flavor">No spells hidden behind closed doors.</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- ═══ FEATURES ═══ -->
+        <section class="cw-section" id="features" aria-label="Features">
+          <h2 class="cw-section__head">Features</h2>
+          <p class="cw-section__intro">Six reasons the king keeps you around.</p>
+
+          <details class="cw-entry" id="feat-wizards" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-hood" aria-hidden="true"></i><span class="cw-entry__label">11 Wizard Archetypes</span></summary>
+            <div class="cw-entry__detail">
+              <div class="cw-detail__icon"><i class="ra ra-hood" aria-hidden="true"></i></div>
+              <h3 class="cw-detail__title">11 Wizard Archetypes</h3>
+              <p class="cw-detail__category cw-detail__category--control">Playstyles</p>
+              <div class="cw-detail__body"><p>From the Rune Caster to the Meteorologist, each archetype plays completely differently. Yes, one of them even uses poop magic. Unlock new wizards by earning achievements.</p></div>
+            </div>
+          </details>
+
+          <details class="cw-entry" id="feat-spells" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-burning-book" aria-hidden="true"></i><span class="cw-entry__label">32 Spells &amp; Talent Trees</span></summary>
+            <div class="cw-entry__detail">
+              <div class="cw-detail__icon"><i class="ra ra-burning-book" aria-hidden="true"></i></div>
+              <h3 class="cw-detail__title">32 Spells &amp; Talent Trees</h3>
+              <p class="cw-detail__category cw-detail__category--offense">Arcane arsenal</p>
+              <div class="cw-detail__body"><p>9 talents per spell across 3 tiers. Build offense, control, support, and utility loadouts that match your wizard. The math is fine. Trust the wizard.</p></div>
+            </div>
+          </details>
+
+          <details class="cw-entry" id="feat-roguelite" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-perspective-dice-random" aria-hidden="true"></i><span class="cw-entry__label">Roguelite Campaign</span></summary>
+            <div class="cw-entry__detail">
+              <div class="cw-detail__icon"><i class="ra ra-perspective-dice-random" aria-hidden="true"></i></div>
+              <h3 class="cw-detail__title">Roguelite Campaign</h3>
+              <p class="cw-detail__category cw-detail__category--utility">25 levels</p>
+              <div class="cw-detail__body"><p>25 levels, seeded runs, and difficulty sliders so you can dial the challenge to taste. Blame the RNG.</p></div>
+            </div>
+          </details>
+
+          <details class="cw-entry" id="feat-endless" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-cycle" aria-hidden="true"></i><span class="cw-entry__label">Endless Mode</span></summary>
+            <div class="cw-entry__detail">
+              <div class="cw-detail__icon"><i class="ra ra-cycle" aria-hidden="true"></i></div>
+              <h3 class="cw-detail__title">Endless Mode</h3>
+              <p class="cw-detail__category cw-detail__category--support">Survival</p>
+              <div class="cw-detail__body"><p>Infinitely scaling enemies. Infinitely scaling you. It gets ridiculous &mdash; that's the point.</p></div>
+            </div>
+          </details>
+
+          <details class="cw-entry" id="feat-bosses" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-dragon" aria-hidden="true"></i><span class="cw-entry__label">Boss Fights</span></summary>
+            <div class="cw-entry__detail">
+              <div class="cw-detail__icon"><i class="ra ra-dragon" aria-hidden="true"></i></div>
+              <h3 class="cw-detail__title">Boss Fights</h3>
+              <p class="cw-detail__category cw-detail__category--offense">Big threats</p>
+              <div class="cw-detail__body"><p>Ogre, Lich, Hags, and Dark Mage. They all want you dead. Specifically. Each demands a different plan.</p></div>
+            </div>
+          </details>
+
+          <details class="cw-entry" id="feat-mp" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-double-team" aria-hidden="true"></i><span class="cw-entry__label">Multiplayer Versus</span></summary>
+            <div class="cw-entry__detail">
+              <div class="cw-detail__icon"><i class="ra ra-double-team" aria-hidden="true"></i></div>
+              <h3 class="cw-detail__title">Multiplayer Versus</h3>
+              <p class="cw-detail__category cw-detail__category--control">Peer-to-peer PvP</p>
+              <div class="cw-detail__body"><p>Bring a friend. Destroy their kingdom instead. Peer-to-peer versus battles, wizard against wizard.</p></div>
+            </div>
+          </details>
+        </section>
+
+        <!-- ═══ WIZARDS ═══ -->
+        <section class="cw-section" id="wizards" aria-label="Wizards">
+          <h2 class="cw-section__head">Wizards</h2>
+          <p class="cw-section__intro">3 revealed. 8 locked. One of them definitely uses poop magic.</p>
+
+          <p class="cw-group__head">Revealed</p>
+
+          <details class="cw-entry" id="wiz-mage" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-crystal-ball" aria-hidden="true"></i><span class="cw-entry__label">Boring Ole Mage</span></summary>
+            <div class="cw-entry__detail">
+              <div class="cw-detail__icon"><i class="ra ra-crystal-ball" aria-hidden="true"></i></div>
+              <h3 class="cw-detail__title">Boring Ole Mage</h3>
+              <p class="cw-detail__category">Wizard &middot; Starter</p>
+              <div class="cw-detail__body"><p>The reliable all-rounder. Straightforward spells, no gimmicks, no surprises &mdash; just solid arcane fundamentals to learn the ropes on.</p></div>
+              <p class="cw-detail__flavor">Sometimes boring is best.</p>
+            </div>
+          </details>
+
+          <details class="cw-entry" id="wiz-random" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-perspective-dice-random" aria-hidden="true"></i><span class="cw-entry__label">Randomancer</span></summary>
+            <div class="cw-entry__detail">
+              <div class="cw-detail__icon"><i class="ra ra-perspective-dice-random" aria-hidden="true"></i></div>
+              <h3 class="cw-detail__title">Randomancer</h3>
+              <p class="cw-detail__category cw-detail__category--control">Wizard &middot; Chaos</p>
+              <div class="cw-detail__body"><p>Embraces chaos. Your spells are drawn from the whims of fate &mdash; adaptable, unpredictable, and never the same run twice.</p></div>
+              <p class="cw-detail__flavor">You don't choose the spell. The spell chooses you.</p>
+            </div>
+          </details>
+
+          <details class="cw-entry" id="wiz-router" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-energise" aria-hidden="true"></i><span class="cw-entry__label">Arcanorouter</span></summary>
+            <div class="cw-entry__detail">
+              <div class="cw-detail__icon"><i class="ra ra-energise" aria-hidden="true"></i></div>
+              <h3 class="cw-detail__title">Arcanorouter</h3>
+              <p class="cw-detail__category cw-detail__category--support">Wizard &middot; Power</p>
+              <div class="cw-detail__body"><p>Master of mana flow. Reroute arcane energy on the fly to power up whatever the battlefield demands.</p></div>
+              <p class="cw-detail__flavor">Geordi would be proud of your power routing.</p>
+            </div>
+          </details>
+
+          <p class="cw-group__head cw-group__head--locked">Locked</p>
+
+          <details class="cw-entry cw-entry--locked" id="wiz-lock1" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-turd" aria-hidden="true"></i><span class="cw-entry__label">???</span></summary>
+            <div class="cw-entry__detail">
+              <div class="cw-detail__icon cw-detail__icon--locked"><i class="ra ra-turd" aria-hidden="true"></i></div>
+              <h3 class="cw-detail__title">???</h3>
+              <p class="cw-detail__category">Locked &middot; Earn an achievement</p>
+              <div class="cw-detail__body"><p>This wizard has not been unlocked yet.</p></div>
+              <p class="cw-detail__flavor">Something smells off&hellip;</p>
+            </div>
+          </details>
+
+          <details class="cw-entry cw-entry--locked" id="wiz-lock2" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-revolver" aria-hidden="true"></i><span class="cw-entry__label">???</span></summary>
+            <div class="cw-entry__detail">
+              <div class="cw-detail__icon cw-detail__icon--locked"><i class="ra ra-revolver" aria-hidden="true"></i></div>
+              <h3 class="cw-detail__title">???</h3>
+              <p class="cw-detail__category">Locked &middot; Earn an achievement</p>
+              <div class="cw-detail__body"><p>This wizard has not been unlocked yet.</p></div>
+              <p class="cw-detail__flavor">Spells? Where you're going, you don't need spells.</p>
+            </div>
+          </details>
+
+          <details class="cw-entry cw-entry--locked" id="wiz-lock3" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-sword" aria-hidden="true"></i><span class="cw-entry__label">???</span></summary>
+            <div class="cw-entry__detail">
+              <div class="cw-detail__icon cw-detail__icon--locked"><i class="ra ra-sword" aria-hidden="true"></i></div>
+              <h3 class="cw-detail__title">???</h3>
+              <p class="cw-detail__category">Locked &middot; Earn an achievement</p>
+              <div class="cw-detail__body"><p>This wizard has not been unlocked yet.</p></div>
+              <p class="cw-detail__flavor">Some wizards prefer a more&hellip; hands-on approach.</p>
+            </div>
+          </details>
+
+          <details class="cw-entry cw-entry--locked" id="wiz-lock4" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-fizzing-flask" aria-hidden="true"></i><span class="cw-entry__label">???</span></summary>
+            <div class="cw-entry__detail">
+              <div class="cw-detail__icon cw-detail__icon--locked"><i class="ra ra-fizzing-flask" aria-hidden="true"></i></div>
+              <h3 class="cw-detail__title">???</h3>
+              <p class="cw-detail__category">Locked &middot; Earn an achievement</p>
+              <div class="cw-detail__body"><p>This wizard has not been unlocked yet.</p></div>
+              <p class="cw-detail__flavor">The cauldron whispers to those who listen.</p>
+            </div>
+          </details>
+
+          <details class="cw-entry cw-entry--locked" id="wiz-lock5" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-lightning-storm" aria-hidden="true"></i><span class="cw-entry__label">???</span></summary>
+            <div class="cw-entry__detail">
+              <div class="cw-detail__icon cw-detail__icon--locked"><i class="ra ra-lightning-storm" aria-hidden="true"></i></div>
+              <h3 class="cw-detail__title">???</h3>
+              <p class="cw-detail__category">Locked &middot; Earn an achievement</p>
+              <div class="cw-detail__body"><p>This wizard has not been unlocked yet.</p></div>
+              <p class="cw-detail__flavor">The sky darkens. Something is brewing up there.</p>
+            </div>
+          </details>
+
+          <details class="cw-entry cw-entry--locked" id="wiz-lock6" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-rune-stone" aria-hidden="true"></i><span class="cw-entry__label">???</span></summary>
+            <div class="cw-entry__detail">
+              <div class="cw-detail__icon cw-detail__icon--locked"><i class="ra ra-rune-stone" aria-hidden="true"></i></div>
+              <h3 class="cw-detail__title">???</h3>
+              <p class="cw-detail__category">Locked &middot; Earn an achievement</p>
+              <div class="cw-detail__body"><p>This wizard has not been unlocked yet.</p></div>
+              <p class="cw-detail__flavor">Mysterious symbols. Mysterious results.</p>
+            </div>
+          </details>
+
+          <details class="cw-entry cw-entry--locked" id="wiz-lock7" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-sheep" aria-hidden="true"></i><span class="cw-entry__label">???</span></summary>
+            <div class="cw-entry__detail">
+              <div class="cw-detail__icon cw-detail__icon--locked"><i class="ra ra-sheep" aria-hidden="true"></i></div>
+              <h3 class="cw-detail__title">???</h3>
+              <p class="cw-detail__category">Locked &middot; Earn an achievement</p>
+              <div class="cw-detail__body"><p>This wizard has not been unlocked yet.</p></div>
+              <p class="cw-detail__flavor">Violence is never the answer&hellip; right?</p>
+            </div>
+          </details>
+
+          <details class="cw-entry cw-entry--locked" id="wiz-lock8" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-burning-eye" aria-hidden="true"></i><span class="cw-entry__label">???</span></summary>
+            <div class="cw-entry__detail">
+              <div class="cw-detail__icon cw-detail__icon--locked"><i class="ra ra-burning-eye" aria-hidden="true"></i></div>
+              <h3 class="cw-detail__title">???</h3>
+              <p class="cw-detail__category">Locked &middot; Earn an achievement</p>
+              <div class="cw-detail__body"><p>This wizard has not been unlocked yet.</p></div>
+              <p class="cw-detail__flavor">Some people just want to watch the world burn.</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- ═══ SCREENSHOTS ═══ -->
+        <section class="cw-section" id="screenshots" aria-label="Screenshots">
+          <h2 class="cw-section__head">Screenshots</h2>
+          <p class="cw-section__intro">Click a screenshot to view it larger.</p>
+
+          <details class="cw-entry cw-entry--shot" id="shot-gameplay" data-entry>
+            <summary class="cw-entry__row"><img class="cw-entry__thumb" src="images/screenshots/gameplay.png" alt="Gameplay" loading="lazy"><span class="cw-entry__label">Gameplay</span></summary>
+            <div class="cw-entry__detail">
+              <img class="cw-detail__img" src="images/screenshots/gameplay.png" alt="Gameplay">
+              <h3 class="cw-detail__title">Gameplay</h3>
+              <div class="cw-detail__body"><p>Casting spells from the tower as waves close in on the castle.</p></div>
+            </div>
+          </details>
+
+          <details class="cw-entry cw-entry--shot" id="shot-brew" data-entry>
+            <summary class="cw-entry__row"><img class="cw-entry__thumb" src="images/screenshots/brew.png" alt="Brewing potions" loading="lazy"><span class="cw-entry__label">Brewing</span></summary>
+            <div class="cw-entry__detail">
+              <img class="cw-detail__img" src="images/screenshots/brew.png" alt="Brewing potions">
+              <h3 class="cw-detail__title">Brewing</h3>
+              <div class="cw-detail__body"><p>Mix ingredients dropped by enemies in the cauldron between the chaos.</p></div>
+            </div>
+          </details>
+
+          <details class="cw-entry cw-entry--shot" id="shot-study" data-entry>
+            <summary class="cw-entry__row"><img class="cw-entry__thumb" src="images/screenshots/study.png" alt="The study" loading="lazy"><span class="cw-entry__label">The Study</span></summary>
+            <div class="cw-entry__detail">
+              <img class="cw-detail__img" src="images/screenshots/study.png" alt="The study">
+              <h3 class="cw-detail__title">The Study</h3>
+              <div class="cw-detail__body"><p>Research new spells and spend your Arcane Insight at the Wizard's Tower.</p></div>
+            </div>
+          </details>
+
+          <details class="cw-entry cw-entry--shot" id="shot-chaos" data-entry>
+            <summary class="cw-entry__row"><img class="cw-entry__thumb" src="images/screenshots/chaos.png" alt="Battlefield chaos" loading="lazy"><span class="cw-entry__label">Battlefield Chaos</span></summary>
+            <div class="cw-entry__detail">
+              <img class="cw-detail__img" src="images/screenshots/chaos.png" alt="Battlefield chaos">
+              <h3 class="cw-detail__title">Battlefield Chaos</h3>
+              <div class="cw-detail__body"><p>When the spells and the swarm collide, the screen earns its name.</p></div>
+            </div>
+          </details>
+
+          <details class="cw-entry cw-entry--shot" id="shot-ogre" data-entry>
+            <summary class="cw-entry__row"><img class="cw-entry__thumb" src="images/screenshots/ogre_boss.png" alt="Ogre boss" loading="lazy"><span class="cw-entry__label">Ogre Boss</span></summary>
+            <div class="cw-entry__detail">
+              <img class="cw-detail__img" src="images/screenshots/ogre_boss.png" alt="Ogre boss">
+              <h3 class="cw-detail__title">Ogre Boss</h3>
+              <div class="cw-detail__body"><p>One of the bosses that wants you dead. Specifically.</p></div>
+            </div>
+          </details>
+
+          <details class="cw-entry cw-entry--shot" id="shot-roguelite" data-entry>
+            <summary class="cw-entry__row"><img class="cw-entry__thumb" src="images/screenshots/roguelite.png" alt="Roguelite run" loading="lazy"><span class="cw-entry__label">Roguelite Run</span></summary>
+            <div class="cw-entry__detail">
+              <img class="cw-detail__img" src="images/screenshots/roguelite.png" alt="Roguelite run">
+              <h3 class="cw-detail__title">Roguelite Run</h3>
+              <div class="cw-detail__body"><p>Seeded runs across 25 levels with difficulty sliders to taste.</p></div>
+            </div>
+          </details>
+        </section>
+
+        <!-- ═══ MANUAL ═══ -->
+        <section class="cw-section" id="manual" aria-label="Manual">
+          <h2 class="cw-section__head">Manual</h2>
+          <p class="cw-section__intro">How to play Court Wizard. Click a topic to expand it.</p>
+
+          <details class="cw-entry" id="man-overview" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-crystal-ball" aria-hidden="true"></i><span class="cw-entry__label">Overview</span></summary>
+            <div class="cw-entry__detail">
+              <h3 class="cw-detail__title">Overview</h3>
+              <div class="cw-detail__body">
+                <p>You are the Court Wizard. Defend the castle from waves of incoming enemies by casting spells. Keep the king alive and eliminate all attackers to advance. Each wave brings more and stronger enemies.</p>
+                <p>You stand atop your tower with the full arcane arsenal at your disposal &mdash; but mana is finite, enemies are many, and the king is a bit of a worrier. Choose spells carefully, time your casts, and brew a potion or two between the chaos.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="cw-entry" id="man-controls" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-gamepad-cross" aria-hidden="true"></i><span class="cw-entry__label">Controls</span></summary>
+            <div class="cw-entry__detail">
+              <h3 class="cw-detail__title">Controls</h3>
+              <div class="cw-detail__body">
+                <ul>
+                  <li><strong>Mouse</strong> &mdash; Aim spells and interact with UI.</li>
+                  <li><strong>Left Click</strong> &mdash; Cast spells (hold to channel).</li>
+                  <li><strong>Escape</strong> &mdash; Pause game / open spell book.</li>
+                  <li><strong>Keys 1&ndash;5</strong> &mdash; Quick-cast from your action bar (most wizards).</li>
+                  <li><strong>Q W E R / A S D F</strong> &mdash; Alternate action bars used by some wizard types.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <details class="cw-entry" id="man-spellbook" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-burning-book" aria-hidden="true"></i><span class="cw-entry__label">Spell Book</span></summary>
+            <div class="cw-entry__detail">
+              <h3 class="cw-detail__title">Spell Book</h3>
+              <div class="cw-detail__body"><p>Press Escape or click the spell button in the top-left to open the spell book. Spells are organized into four categories: <strong>Offense</strong>, <strong>Control</strong>, <strong>Support</strong>, and <strong>Utility</strong>. Click a spell to see its description, then Select to prime it. You can also assign spells to action bar slots (1&ndash;5) from here.</p></div>
+            </div>
+          </details>
+
+          <details class="cw-entry" id="man-actionbar" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-hand" aria-hidden="true"></i><span class="cw-entry__label">Action Bar</span></summary>
+            <div class="cw-entry__detail">
+              <h3 class="cw-detail__title">Action Bar</h3>
+              <div class="cw-detail__body"><p>The action bar at the bottom-left shows your 5 quick-cast slots. Press 1&ndash;5 anytime to instantly prime that spell. To assign a spell, open the spell book and press a number key while hovering over it.</p></div>
+            </div>
+          </details>
+
+          <details class="cw-entry" id="man-casting" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-lightning-bolt" aria-hidden="true"></i><span class="cw-entry__label">Casting Styles</span></summary>
+            <div class="cw-entry__detail">
+              <h3 class="cw-detail__title">Casting Styles</h3>
+              <div class="cw-detail__body">
+                <p>Different spells have different casting styles:</p>
+                <ul>
+                  <li><strong>Click</strong> &mdash; Click once to fire. <em>(Magic Missile, Dispel)</em></li>
+                  <li><strong>Hold</strong> &mdash; Hold to channel. <em>(Disintegrate, Finger of Death)</em></li>
+                  <li><strong>Placed</strong> &mdash; Hold to charge, release to place. <em>(Guardian Circle, Entangle, Sleep)</em></li>
+                  <li><strong>Drag</strong> &mdash; Click and drag to draw a line. <em>(Wall of Dirt, Wall of Fire)</em></li>
+                  <li><strong>Concentration</strong> &mdash; Persist until cancelled. <em>(Squall, Meteor Fall)</em></li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <details class="cw-entry" id="man-mana" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-diamond" aria-hidden="true"></i><span class="cw-entry__label">Mana Management</span></summary>
+            <div class="cw-entry__detail">
+              <h3 class="cw-detail__title">Mana Management</h3>
+              <div class="cw-detail__body">
+                <ul>
+                  <li>Each spell costs mana to cast.</li>
+                  <li>Mana regenerates over time.</li>
+                  <li>Watch your mana bar to ensure you can cast.</li>
+                  <li>Some powerful spells require full or near-full mana.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <details class="cw-entry" id="man-concentration" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-meditation" aria-hidden="true"></i><span class="cw-entry__label">Concentration</span></summary>
+            <div class="cw-entry__detail">
+              <h3 class="cw-detail__title">Concentration</h3>
+              <div class="cw-detail__body"><p>Concentration spells remain active until you end them. While concentrating, the spell's mana cost is reserved &mdash; your mana won't regenerate past the reserved amount. You can concentrate on multiple spells at once, but each one reserves more mana. Click the cancel buttons on the right side of the screen to end individual concentration spells and free up mana.</p></div>
+            </div>
+          </details>
+
+          <details class="cw-entry" id="man-cauldron" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-fizzing-flask" aria-hidden="true"></i><span class="cw-entry__label">Cauldron Brewing</span></summary>
+            <div class="cw-entry__detail">
+              <h3 class="cw-detail__title">Cauldron Brewing</h3>
+              <div class="cw-detail__body"><p>The cauldron lets you brew potions from ingredients dropped by defeated enemies. Click the cauldron icon to open the brewing menu, toggle ingredients on or off, preview the effects, and click Brew. Your wizard can't cast while brewing, and mixing multiple ingredients dilutes each effect &mdash; choose carefully.</p></div>
+            </div>
+          </details>
+
+          <details class="cw-entry" id="man-progression" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-scroll-unfurled" aria-hidden="true"></i><span class="cw-entry__label">Research &amp; Progression</span></summary>
+            <div class="cw-entry__detail">
+              <h3 class="cw-detail__title">Research &amp; Progression</h3>
+              <div class="cw-detail__body"><p>Defeating enemies earns <strong>Arcane Insight</strong>, which you spend at the Wizard's Tower to research new spells. Spells are organized in research chains &mdash; unlock earlier spells to access more powerful ones. Some spells require a minimum number of total spells researched.</p></div>
+            </div>
+          </details>
+
+          <details class="cw-entry" id="man-wizardtypes" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-hood" aria-hidden="true"></i><span class="cw-entry__label">Wizard Types</span></summary>
+            <div class="cw-entry__detail">
+              <h3 class="cw-detail__title">Wizard Types</h3>
+              <div class="cw-detail__body"><p>Different wizard types offer unique playstyles. Three are available to start &mdash; Boring Ole Mage, Randomancer, and Arcanorouter &mdash; and eight more remain locked until you earn their achievements. See the <strong>Wizards</strong> tab for the full roster.</p></div>
+            </div>
+          </details>
+
+          <details class="cw-entry" id="man-tips" data-entry>
+            <summary class="cw-entry__row"><i class="ra ra-aura" aria-hidden="true"></i><span class="cw-entry__label">Tactical Tips</span></summary>
+            <div class="cw-entry__detail">
+              <h3 class="cw-detail__title">Tactical Tips</h3>
+              <div class="cw-detail__body">
+                <ul>
+                  <li>Position walls and fire strategically to funnel enemies into kill zones.</li>
+                  <li>Teleport can reposition both enemies and allies.</li>
+                  <li>Guardian Circle gives temporary HP that can save units from death.</li>
+                  <li>Use Telekinesis to collect ingredient drops from across the battlefield.</li>
+                  <li>Combine Grease with fire spells for devastating explosions.</li>
+                  <li>Black Hole pulls enemies into a growing vortex.</li>
+                  <li>Brew potions between waves for maximum effect.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+        </section>
+
+        <!-- ═══ CHANGELOG ═══ -->
+        <section class="cw-section" id="changelog" aria-label="Changelog">
+          <h2 class="cw-section__head">Changelog</h2>
+          <p class="cw-section__intro">Every version, newest first. Click a version for its notes.</p>
+          <!-- inject:changelog -->
+        </section>
+
+        </div><!-- /.cw-content -->
+      </div><!-- /.cw-right -->
+    </div><!-- /.cw-main -->
+
+    <!-- Footer: legal links + studio logo -->
+    <footer class="cw-footer">
+      <div class="cw-footer__links">
+        <a href="https://store.steampowered.com/app/4550880/Court_Wizard/" target="_blank" rel="noopener"><i class="ra ra-fire" aria-hidden="true"></i> Steam</a>
+        <span class="cw-footer__dot" aria-hidden="true">&middot;</span>
+        <a href="credits.html">Credits</a>
+        <span class="cw-footer__dot" aria-hidden="true">&middot;</span>
+        <a href="health.html">Health</a>
+        <span class="cw-footer__dot" aria-hidden="true">&middot;</span>
+        <a href="privacy.html">Privacy</a>
+        <span class="cw-footer__dot" aria-hidden="true">&middot;</span>
+        <span class="cw-footer__copy">&copy; 2026 Blackhearth Games</span>
       </div>
-      <div class="about-art" data-reveal style="--delay:1">
-        <div class="art-frame">
-          <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Key art placeholder">
-            <defs>
-              <linearGradient id="art-grad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#2e2648"/>
-                <stop offset="100%" stop-color="#1a1428"/>
-              </linearGradient>
-              <radialGradient id="art-glow" cx="50%" cy="40%">
-                <stop offset="0%" stop-color="rgba(114,9,183,0.15)"/>
-                <stop offset="100%" stop-color="transparent"/>
-              </radialGradient>
-            </defs>
-            <rect width="400" height="500" fill="url(#art-grad)"/>
-            <rect width="400" height="500" fill="url(#art-glow)"/>
-            <text x="200" y="240" text-anchor="middle" fill="#d9d9d9" font-family="serif" font-size="18" opacity="0.4">Key Art</text>
-            <text x="200" y="268" text-anchor="middle" fill="#a09585" font-family="serif" font-size="13" opacity="0.3">Coming Soon</text>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider" aria-hidden="true"></div>
-
-  <!-- ═══ FEATURES ═══ -->
-  <section class="features" id="features">
-    <div class="container">
-      <h2 class="heading" data-reveal>Features</h2>
-      <div class="features-grid">
-        <div class="feature-card" data-reveal style="--delay:0">
-          <div class="feature-icon"><i class="ra ra-hood" aria-hidden="true"></i></div>
-          <h3 class="feature-title">11 Wizard Archetypes</h3>
-          <p class="feature-text">From the Rune Caster to the Meteorologist. Yes, one of them even uses poop magic.</p>
-        </div>
-        <div class="feature-card" data-reveal style="--delay:1">
-          <div class="feature-icon"><i class="ra ra-burning-book" aria-hidden="true"></i></div>
-          <h3 class="feature-title">32 Spells &amp; Talent Trees</h3>
-          <p class="feature-text">9 talents per spell across 3 tiers. The math is fine. Trust the wizard.</p>
-        </div>
-        <div class="feature-card" data-reveal style="--delay:2">
-          <div class="feature-icon"><i class="ra ra-perspective-dice-random" aria-hidden="true"></i></div>
-          <h3 class="feature-title">Roguelite Campaign</h3>
-          <p class="feature-text">25 levels, seeded runs, and difficulty sliders. Blame the RNG.</p>
-        </div>
-        <div class="feature-card" data-reveal style="--delay:3">
-          <div class="feature-icon"><i class="ra ra-cycle" aria-hidden="true"></i></div>
-          <h3 class="feature-title">Endless Mode</h3>
-          <p class="feature-text">Infinitely scaling enemies. Infinitely scaling you. It gets ridiculous.</p>
-        </div>
-        <div class="feature-card" data-reveal style="--delay:4">
-          <div class="feature-icon"><i class="ra ra-dragon" aria-hidden="true"></i></div>
-          <h3 class="feature-title">Boss Fights</h3>
-          <p class="feature-text">Ogre, Lich, Hags, and Dark Mage. They all want you dead. Specifically.</p>
-        </div>
-        <div class="feature-card" data-reveal style="--delay:5">
-          <div class="feature-icon"><i class="ra ra-double-team" aria-hidden="true"></i></div>
-          <h3 class="feature-title">Multiplayer Versus</h3>
-          <p class="feature-text">Peer-to-peer PvP. Bring a friend. Destroy their kingdom instead.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider" aria-hidden="true"></div>
-
-  <!-- ═══ WIZARDS SHOWCASE ═══ -->
-  <section class="wizards" id="wizards">
-    <div class="container">
-      <h2 class="heading" data-reveal>Choose Your Wizard</h2>
-      <p class="wizards-tease" data-reveal style="--delay:0">3 revealed. 8 locked. One of them definitely uses poop magic.</p>
-      <div class="wizards-grid">
-
-        <div class="wizard-card" data-reveal style="--delay:0; --accent:#c9a84c">
-          <div class="wizard-portrait">
-            <i class="ra ra-crystal-ball" aria-hidden="true"></i>
-          </div>
-          <h3 class="wizard-name">Boring Ole Mage</h3>
-          <p class="wizard-flavor">Sometimes boring is best.</p>
-        </div>
-
-        <div class="wizard-card" data-reveal style="--delay:1; --accent:#b44d1e">
-          <div class="wizard-portrait">
-            <i class="ra ra-perspective-dice-random" aria-hidden="true"></i>
-          </div>
-          <h3 class="wizard-name">Randomancer</h3>
-          <p class="wizard-flavor">You don't choose the spell. The spell chooses you.</p>
-        </div>
-
-        <div class="wizard-card" data-reveal style="--delay:2; --accent:#1a7a6e">
-          <div class="wizard-portrait">
-            <i class="ra ra-energise" aria-hidden="true"></i>
-          </div>
-          <h3 class="wizard-name">Arcanorouter</h3>
-          <p class="wizard-flavor">Geordi would be proud of your power routing.</p>
-        </div>
-
-        <div class="wizard-card wizard-card--locked" data-reveal style="--delay:3; --accent:#8b6914">
-          <div class="wizard-portrait wizard-portrait--locked">
-            <i class="ra ra-turd" aria-hidden="true"></i>
-          </div>
-          <h3 class="wizard-name wizard-name--locked">???</h3>
-          <p class="wizard-flavor">Something smells off...</p>
-        </div>
-
-        <div class="wizard-card wizard-card--locked" data-reveal style="--delay:4; --accent:#8b1a1a">
-          <div class="wizard-portrait wizard-portrait--locked">
-            <i class="ra ra-revolver" aria-hidden="true"></i>
-          </div>
-          <h3 class="wizard-name wizard-name--locked">???</h3>
-          <p class="wizard-flavor">Spells? Where you're going, you don't need spells.</p>
-        </div>
-
-        <div class="wizard-card wizard-card--locked" data-reveal style="--delay:5; --accent:#b44d1e">
-          <div class="wizard-portrait wizard-portrait--locked">
-            <i class="ra ra-sword" aria-hidden="true"></i>
-          </div>
-          <h3 class="wizard-name wizard-name--locked">???</h3>
-          <p class="wizard-flavor">Some wizards prefer a more... hands-on approach.</p>
-        </div>
-
-        <div class="wizard-card wizard-card--locked" data-reveal style="--delay:6; --accent:#1e7a3e">
-          <div class="wizard-portrait wizard-portrait--locked">
-            <i class="ra ra-fizzing-flask" aria-hidden="true"></i>
-          </div>
-          <h3 class="wizard-name wizard-name--locked">???</h3>
-          <p class="wizard-flavor">The cauldron whispers to those who listen.</p>
-        </div>
-
-        <div class="wizard-card wizard-card--locked" data-reveal style="--delay:7; --accent:#1e3a8e">
-          <div class="wizard-portrait wizard-portrait--locked">
-            <i class="ra ra-lightning-storm" aria-hidden="true"></i>
-          </div>
-          <h3 class="wizard-name wizard-name--locked">???</h3>
-          <p class="wizard-flavor">The sky darkens. Something is brewing up there.</p>
-        </div>
-
-        <div class="wizard-card wizard-card--locked" data-reveal style="--delay:8; --accent:#7b2d8e">
-          <div class="wizard-portrait wizard-portrait--locked">
-            <i class="ra ra-rune-stone" aria-hidden="true"></i>
-          </div>
-          <h3 class="wizard-name wizard-name--locked">???</h3>
-          <p class="wizard-flavor">Mysterious symbols. Mysterious results.</p>
-        </div>
-
-        <div class="wizard-card wizard-card--locked" data-reveal style="--delay:9; --accent:#a0a060">
-          <div class="wizard-portrait wizard-portrait--locked">
-            <i class="ra ra-sheep" aria-hidden="true"></i>
-          </div>
-          <h3 class="wizard-name wizard-name--locked">???</h3>
-          <p class="wizard-flavor">Violence is never the answer... right?</p>
-        </div>
-
-        <div class="wizard-card wizard-card--locked" data-reveal style="--delay:10; --accent:#8b1a1a">
-          <div class="wizard-portrait wizard-portrait--locked">
-            <i class="ra ra-burning-eye" aria-hidden="true"></i>
-          </div>
-          <h3 class="wizard-name wizard-name--locked">???</h3>
-          <p class="wizard-flavor">Some people just want to watch the world burn.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <div class="divider" aria-hidden="true"></div>
-
-  <!-- ═══ SCREENSHOTS ═══ -->
-  <section class="screenshots" id="screenshots">
-    <div class="container">
-      <h2 class="heading" data-reveal>Screenshots</h2>
-      <div class="screenshots-grid">
-        <a href="#shot-1" class="screenshot-slot" data-reveal style="--delay:0" aria-label="Gameplay">
-          <img src="images/screenshots/gameplay.png" alt="Gameplay" loading="lazy">
-        </a>
-        <a href="#shot-2" class="screenshot-slot" data-reveal style="--delay:1" aria-label="Brewing">
-          <img src="images/screenshots/brew.png" alt="Brewing potions" loading="lazy">
-        </a>
-        <a href="#shot-3" class="screenshot-slot" data-reveal style="--delay:2" aria-label="Study">
-          <img src="images/screenshots/study.png" alt="The study" loading="lazy">
-        </a>
-        <a href="#shot-4" class="screenshot-slot" data-reveal style="--delay:3" aria-label="Chaos">
-          <img src="images/screenshots/chaos.png" alt="Battlefield chaos" loading="lazy">
-        </a>
-        <a href="#shot-5" class="screenshot-slot" data-reveal style="--delay:4" aria-label="Ogre boss">
-          <img src="images/screenshots/ogre_boss.png" alt="Ogre boss" loading="lazy">
-        </a>
-        <a href="#shot-6" class="screenshot-slot" data-reveal style="--delay:5" aria-label="Roguelite run">
-          <img src="images/screenshots/roguelite.png" alt="Roguelite run" loading="lazy">
-        </a>
-      </div>
-    </div>
-
-    <!-- CSS-only lightbox overlays -->
-    <div id="shot-1" class="lightbox"><a href="#screenshots" class="lightbox-close" aria-label="Close">&times;</a><div class="lightbox-content"><img src="images/screenshots/gameplay.png" alt="Gameplay"></div></div>
-    <div id="shot-2" class="lightbox"><a href="#screenshots" class="lightbox-close" aria-label="Close">&times;</a><div class="lightbox-content"><img src="images/screenshots/brew.png" alt="Brewing potions"></div></div>
-    <div id="shot-3" class="lightbox"><a href="#screenshots" class="lightbox-close" aria-label="Close">&times;</a><div class="lightbox-content"><img src="images/screenshots/study.png" alt="The study"></div></div>
-    <div id="shot-4" class="lightbox"><a href="#screenshots" class="lightbox-close" aria-label="Close">&times;</a><div class="lightbox-content"><img src="images/screenshots/chaos.png" alt="Battlefield chaos"></div></div>
-    <div id="shot-5" class="lightbox"><a href="#screenshots" class="lightbox-close" aria-label="Close">&times;</a><div class="lightbox-content"><img src="images/screenshots/ogre_boss.png" alt="Ogre boss"></div></div>
-    <div id="shot-6" class="lightbox"><a href="#screenshots" class="lightbox-close" aria-label="Close">&times;</a><div class="lightbox-content"><img src="images/screenshots/roguelite.png" alt="Roguelite run"></div></div>
-  </section>
-
-  <!-- ═══ FOOTER ═══ -->
-  <footer class="site-footer" id="footer">
-    <div class="container footer-inner">
-      <div class="footer-text">
-        <div class="footer-links">
-          <a href="https://store.steampowered.com/app/4550880/Court_Wizard/" class="footer-link" target="_blank" rel="noopener"><i class="ra ra-fire" aria-hidden="true"></i> Steam</a>
-          <span class="footer-dot" aria-hidden="true">&middot;</span>
-          <a href="#" class="footer-link"><i class="ra ra-forging" aria-hidden="true"></i> GitHub</a>
-        </div>
-        <p class="footer-copy">&copy; 2026 Blackhearth Games. All rights reserved.</p>
-      </div>
-      <a href="https://blackhearthgames.com" class="footer-brand" aria-label="Blackhearth Games" target="_blank" rel="noopener">
-        <img class="footer-logo" src="images/blackhearth_logo.svg" alt="Blackhearth Games">
+      <a class="cw-footer__brand" href="https://blackhearthgames.com" target="_blank" rel="noopener" aria-label="Blackhearth Games">
+        <img src="images/blackhearth_logo.svg" alt="Blackhearth Games">
       </a>
-    </div>
-  </footer>
+    </footer>
 
-  </div><!-- /.page-content -->
+  </div><!-- /.cw-frame -->
 
   <script src="js/main.js" defer></script>
 </body>
