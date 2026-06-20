@@ -75,10 +75,43 @@
     });
   });
 
+  // ── Hash routing: "#tab" or "#tab/anchor" (deep link to an entry) ──
+  function parseHash() {
+    var parts = (location.hash || '').replace(/^#/, '').split('/');
+    return { tab: parts[0] || '', anchor: parts[1] || '' };
+  }
+
+  function entryByAnchor(anchor) {
+    if (!anchor) return null;
+    for (var i = 0; i < entries.length; i++) {
+      if (entries[i].getAttribute('data-anchor') === anchor) return entries[i];
+    }
+    return null;
+  }
+
+  // Reveal an entry's detail: side panel in wide mode, inline accordion otherwise.
+  function openEntry(entry) {
+    if (wide.matches) {
+      selectEntry(entry);
+    } else {
+      entry.open = true;
+      if (entry.scrollIntoView) entry.scrollIntoView({ block: 'start' });
+    }
+  }
+
+  function routeFromHash() {
+    var h = parseHash();
+    var entry = entryByAnchor(h.anchor);
+    // A linked entry decides the tab so the two can never drift out of sync;
+    // otherwise fall back to the hash's tab segment.
+    var section = entry && entry.closest ? entry.closest('.cw-section') : null;
+    setTab(section && section.id ? section.id : h.tab);
+    if (entry) openEntry(entry);
+  }
+
   // ── Back/forward + manual hash edits ──
-  function fromHash() { return (location.hash || '').replace(/^#/, ''); }
-  window.addEventListener('popstate', function () { setTab(fromHash()); });
-  window.addEventListener('hashchange', function () { setTab(fromHash()); });
+  window.addEventListener('popstate', routeFromHash);
+  window.addEventListener('hashchange', routeFromHash);
 
   // ── Entry clicks ──
   entries.forEach(function (entry) {
@@ -110,7 +143,7 @@
   }
 
   // ── Initial sync ──
-  setTab(root.dataset.tab || fromHash() || 'about');
+  routeFromHash();
 
   // ── Light/dark theme toggle (the inline <head> script sets the initial
   //    theme before paint; this just handles clicks + persistence) ──

@@ -19,7 +19,9 @@
       var d = document.documentElement;
       d.className = 'js';
       var valid = ['about', 'features', 'wizards', 'screenshots', 'manual', 'changelog'];
-      var t = (location.hash || '').slice(1);
+      // Hash is either "#tab" or "#tab/anchor" (deep link to an entry); the
+      // tab is always the first segment.
+      var t = ((location.hash || '').slice(1).split('/'))[0];
       d.dataset.tab = valid.indexOf(t) !== -1 ? t : 'about';
       try {
         var st = localStorage.getItem('cw-theme');
@@ -125,6 +127,27 @@
                 <p>Wishlist on Steam to follow along, or browse the source when it goes public.</p>
               </div>
               <p class="cw-detail__flavor">No spells hidden behind closed doors.</p>
+            </div>
+          </details>
+
+          <details class="cw-entry" id="abt-credits" data-entry data-anchor="credits">
+            <summary class="cw-entry__row"><i class="ra ra-trophy" aria-hidden="true"></i><span class="cw-entry__label">Credits</span></summary>
+            <div class="cw-entry__detail">
+              <!-- inject:md content/CREDITS.md -->
+            </div>
+          </details>
+
+          <details class="cw-entry" id="abt-privacy" data-entry data-anchor="privacy">
+            <summary class="cw-entry__row"><i class="ra ra-key" aria-hidden="true"></i><span class="cw-entry__label">Privacy</span></summary>
+            <div class="cw-entry__detail">
+              <!-- inject:md content/PRIVACY_POLICY.md -->
+            </div>
+          </details>
+
+          <details class="cw-entry" id="abt-health" data-entry data-anchor="health">
+            <summary class="cw-entry__row"><i class="ra ra-hospital-cross" aria-hidden="true"></i><span class="cw-entry__label">Health &amp; Safety</span></summary>
+            <div class="cw-entry__detail">
+              <!-- inject:md content/HEALTH_WARNING.md -->
             </div>
           </details>
         </section>
@@ -538,11 +561,11 @@
       <div class="cw-footer__links">
         <a href="https://store.steampowered.com/app/4550880/Court_Wizard/" target="_blank" rel="noopener"><i class="ra ra-fire" aria-hidden="true"></i> Steam</a>
         <span class="cw-footer__dot" aria-hidden="true">&middot;</span>
-        <a href="credits.html">Credits</a>
+        <a href="#about/credits">Credits</a>
         <span class="cw-footer__dot" aria-hidden="true">&middot;</span>
-        <a href="health.html">Health</a>
+        <a href="#about/health">Health</a>
         <span class="cw-footer__dot" aria-hidden="true">&middot;</span>
-        <a href="privacy.html">Privacy</a>
+        <a href="#about/privacy">Privacy</a>
         <span class="cw-footer__dot" aria-hidden="true">&middot;</span>
         <span class="cw-footer__copy">&copy; 2026 Blackhearth Games</span>
       </div>

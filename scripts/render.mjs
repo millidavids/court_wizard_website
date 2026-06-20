@@ -1,8 +1,9 @@
 // Build-time HTML renderer.
 //
-// Produces the shipped HTML in _site/ so the site works without JavaScript:
-//   • index.html   — injects per-version changelog entries (from content/CHANGELOG.md)
-//   • credits/health/privacy.html — inject rendered markdown bodies
+// Produces the shipped HTML in _site/ so the site works without JavaScript.
+// Everything lives in index.html now: this injects the changelog and the
+// credits/privacy/health markdown bodies (the About → Credits/Privacy/Health
+// & Safety entries) into it.
 //
 // HTML written here is the single source of truth in _site/; build_site.sh
 // copies only assets afterwards (it must never re-copy these files).
@@ -62,6 +63,12 @@ function buildChangelog() {
     .join('\n');
 }
 
+// Replace every <!-- inject:md <path> --> with that file's rendered markdown.
+// Used by the About → Credits/Privacy/Health & Safety entries in index.html.
+const INJECT_RE = /<!--\s*inject:md\s+(\S+)\s*-->/g;
+const injectMd = (html) =>
+  html.replace(INJECT_RE, (_, src) => `<div class="cw-prose">${marked.parse(read(src))}</div>`);
+
 // ── index.html ────────────────────────────────────────────────────────────
 const changelogHtml = buildChangelog();
 let index = read('index.html');
@@ -69,16 +76,7 @@ if (!index.includes('<!-- inject:changelog -->')) {
   throw new Error('index.html is missing the <!-- inject:changelog --> placeholder');
 }
 index = index.replace('<!-- inject:changelog -->', () => changelogHtml);
+index = injectMd(index); // About entries pull in content/{CREDITS,PRIVACY_POLICY,HEALTH_WARNING}.md
 write('index.html', index);
 
-// ── Legal pages: replace <!-- inject:md <path> --> with rendered markdown ──
-const INJECT_RE = /<!--\s*inject:md\s+(\S+)\s*-->/g;
-for (const page of ['credits.html', 'health.html', 'privacy.html']) {
-  const html = read(page).replace(
-    INJECT_RE,
-    (_, src) => `<div class="cw-prose">${marked.parse(read(src))}</div>`
-  );
-  write(page, html);
-}
-
-console.log('Rendered _site/{index,credits,health,privacy}.html');
+console.log('Rendered _site/index.html');
