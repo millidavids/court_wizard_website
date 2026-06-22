@@ -619,44 +619,6 @@ html.js[data-tab="changelog"]   #changelog { display: block; }
 
 
 /* ════════════════════════════════════════════
-   STANDALONE LEGAL PAGES (credits / health / privacy)
-   ════════════════════════════════════════════ */
-.cw-page-content {
-  flex: 1 1 auto;
-  background: var(--content-bg);
-  border-radius: 6px;
-  padding: 18px clamp(16px, 4vw, 40px);
-  max-width: 900px;
-  width: 100%;
-  margin: 0 auto;
-}
-.cw-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: clamp(0.55rem, 0.8vw, 0.72rem);
-  color: var(--text-muted);
-  background: var(--tab-bg);
-  border: 1px solid var(--tab-border);
-  border-radius: 4px;
-  padding: 0.55rem 0.9rem;
-  transform: translateY(0);
-  box-shadow: 0 7px 0 0 var(--btn-edge);
-  transition: transform 0.1s ease, box-shadow 0.1s ease, color 0.15s ease, border-color 0.15s ease;
-}
-.cw-back:hover, .cw-back:focus-visible {
-  color: var(--text-primary);
-  border-color: var(--purple-bright);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 0 0 var(--btn-edge);
-}
-.cw-back:active {
-  transform: translateY(7px);
-  box-shadow: 0 0 0 0 var(--btn-edge);
-}
-
-
-/* ════════════════════════════════════════════
    LIGHT THEME
    Re-skins the token palette to a warm parchment/light-stone look while
    keeping the purple + gold accents. The dark parallax art stays but gets a

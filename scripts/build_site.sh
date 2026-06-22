@@ -22,4 +22,8 @@ node scripts/render.mjs
 # Copy static assets only (no *.html, no raw content/*.md).
 cp -r css js images _site/
 
+# Cloudflare Pages config: _redirects maps old standalone legal-page URLs to
+# their new in-About anchors so external inbound links don't 404.
+cp _redirects _site/
+
 echo "Built _site/ with $(find _site -type f | wc -l) files."
