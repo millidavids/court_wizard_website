@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Court Wizard — Defend Your Kingdom with Arcane Power</title>
-  <meta name="description" content="Court Wizard is a 3D real-time strategy tower defense game built in Rust. Choose from 11 wizard archetypes, master 32 spells with talent trees, and defend your kingdom.">
+  <meta name="description" content="Court Wizard is a 3D real-time strategy game built in Rust. Choose from 11 wizard archetypes, master 32 spells with talent trees, and defend your kingdom.">
   <meta name="theme-color" content="#1a1428">
   <link rel="icon" type="image/png" href="/images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,7 @@
     (function () {
       var d = document.documentElement;
       d.className = 'js';
-      var valid = ['about', 'features', 'wizards', 'screenshots', 'manual', 'changelog'];
+      var valid = ['about', 'features', 'screenshots', 'manual', 'changelog'];
       // Path is "/tab" or "/tab/slug"; the tab is always the first segment.
       // Fall back to a legacy "#tab/..." hash when the path is root (old links).
       var t = (location.pathname || '/').split('/').filter(Boolean)[0];
@@ -75,7 +75,6 @@
         <nav class="cw-tabs" aria-label="Sections">
           <a class="cw-tab" href="/about">About</a>
           <a class="cw-tab" href="/features">Features</a>
-          <a class="cw-tab" href="/wizards">Wizards</a>
           <a class="cw-tab" href="/screenshots">Screenshots</a>
           <a class="cw-tab" href="/manual">Manual</a>
           <a class="cw-tab" href="/changelog">Changelog</a>
@@ -95,9 +94,9 @@
             <div class="cw-entry__detail">
               <div class="cw-detail__icon"><i class="ra ra-fairy-wand" aria-hidden="true"></i></div>
               <h3 class="cw-detail__title">What is Court Wizard?</h3>
-              <p class="cw-detail__category">Real-time strategy &middot; Tower defense</p>
+              <p class="cw-detail__category">Real-time strategy</p>
               <div class="cw-detail__body">
-                <p>Court Wizard is a 2D/3D real-time strategy tower-ish defense game where you play as a powerful wizard defending your castle from relentless waves of attackers.</p>
+                <p>Court Wizard is a 2D/3D real-time strategy game where you play as a powerful wizard defending your castle from relentless waves of attackers.</p>
                 <p>Cast devastating spells from your tower, support your defenders, and master the arcane arts to protect your king. Built entirely in Rust with the Bevy engine.</p>
               </div>
               <p class="cw-detail__flavor">The king trusts you. Probably a mistake.</p>
@@ -164,8 +163,28 @@
             <div class="cw-entry__detail">
               <div class="cw-detail__icon"><i class="ra ra-hood" aria-hidden="true"></i></div>
               <h3 class="cw-detail__title">11 Wizard Archetypes</h3>
-              <p class="cw-detail__category cw-detail__category--control">Playstyles</p>
-              <div class="cw-detail__body"><p>From the Rune Caster to the Meteorologist, each archetype plays completely differently. Yes, one of them even uses poop magic. Unlock new wizards by earning achievements.</p></div>
+              <p class="cw-detail__category cw-detail__category--control">3 revealed &middot; 8 locked</p>
+              <div class="cw-detail__body">
+                <p>From the Rune Caster to the Meteorologist, each archetype plays completely differently &mdash; yes, one of them even uses poop magic. Three are revealed; the other eight unlock as you earn achievements.</p>
+                <p><strong>Revealed</strong></p>
+                <ul>
+                  <li><strong>Boring Ole Mage</strong> <em>(Starter)</em> &mdash; the reliable all-rounder: straightforward spells, no gimmicks, just solid arcane fundamentals to learn on.</li>
+                  <li><strong>Randomancer</strong> <em>(Chaos)</em> &mdash; embraces chaos; your spells are drawn from the whims of fate, never the same run twice.</li>
+                  <li><strong>Arcanorouter</strong> <em>(Power)</em> &mdash; master of mana flow; reroute arcane energy on the fly to power whatever the battlefield demands.</li>
+                </ul>
+                <p><strong>Locked</strong> &mdash; earn achievements to reveal:</p>
+                <ul>
+                  <li>Something smells off&hellip;</li>
+                  <li>Spells? Where you're going, you don't need spells.</li>
+                  <li>Some wizards prefer a more&hellip; hands-on approach.</li>
+                  <li>The cauldron whispers to those who listen.</li>
+                  <li>The sky darkens. Something is brewing up there.</li>
+                  <li>Mysterious symbols. Mysterious results.</li>
+                  <li>Violence is never the answer&hellip; right?</li>
+                  <li>Some people just want to watch the world burn.</li>
+                </ul>
+              </div>
+              <p class="cw-detail__flavor">Unlock new wizards by earning achievements.</p>
             </div>
           </details>
 
@@ -195,7 +214,7 @@
               <div class="cw-detail__icon"><i class="ra ra-cycle" aria-hidden="true"></i></div>
               <h3 class="cw-detail__title">Endless Mode</h3>
               <p class="cw-detail__category cw-detail__category--support">Survival</p>
-              <div class="cw-detail__body"><p>Infinitely scaling enemies. Infinitely scaling you. It gets ridiculous &mdash; that's the point.</p></div>
+              <div class="cw-detail__body"><p>Infinitely scaling enemies. It gets ridiculous &mdash; that's the point.</p></div>
             </div>
           </details>
 
@@ -231,136 +250,6 @@
           </details>
         </section>
 
-        <!-- ═══ WIZARDS ═══ -->
-        <section class="cw-section" id="wizards" aria-label="Wizards">
-          <h2 class="cw-section__head">Wizards</h2>
-          <p class="cw-section__intro">3 revealed. 8 locked. One of them definitely uses poop magic.</p>
-
-          <p class="cw-group__head">Revealed</p>
-
-          <details class="cw-entry" id="wiz-mage" data-entry>
-            <summary class="cw-entry__row"><i class="ra ra-crystal-ball" aria-hidden="true"></i><span class="cw-entry__label">Boring Ole Mage</span></summary>
-            <div class="cw-entry__detail">
-              <div class="cw-detail__icon"><i class="ra ra-crystal-ball" aria-hidden="true"></i></div>
-              <h3 class="cw-detail__title">Boring Ole Mage</h3>
-              <p class="cw-detail__category">Wizard &middot; Starter</p>
-              <div class="cw-detail__body"><p>The reliable all-rounder. Straightforward spells, no gimmicks, no surprises &mdash; just solid arcane fundamentals to learn the ropes on.</p></div>
-              <p class="cw-detail__flavor">Sometimes boring is best.</p>
-            </div>
-          </details>
-
-          <details class="cw-entry" id="wiz-random" data-entry>
-            <summary class="cw-entry__row"><i class="ra ra-perspective-dice-random" aria-hidden="true"></i><span class="cw-entry__label">Randomancer</span></summary>
-            <div class="cw-entry__detail">
-              <div class="cw-detail__icon"><i class="ra ra-perspective-dice-random" aria-hidden="true"></i></div>
-              <h3 class="cw-detail__title">Randomancer</h3>
-              <p class="cw-detail__category cw-detail__category--control">Wizard &middot; Chaos</p>
-              <div class="cw-detail__body"><p>Embraces chaos. Your spells are drawn from the whims of fate &mdash; adaptable, unpredictable, and never the same run twice.</p></div>
-              <p class="cw-detail__flavor">You don't choose the spell. The spell chooses you.</p>
-            </div>
-          </details>
-
-          <details class="cw-entry" id="wiz-router" data-entry>
-            <summary class="cw-entry__row"><i class="ra ra-energise" aria-hidden="true"></i><span class="cw-entry__label">Arcanorouter</span></summary>
-            <div class="cw-entry__detail">
-              <div class="cw-detail__icon"><i class="ra ra-energise" aria-hidden="true"></i></div>
-              <h3 class="cw-detail__title">Arcanorouter</h3>
-              <p class="cw-detail__category cw-detail__category--support">Wizard &middot; Power</p>
-              <div class="cw-detail__body"><p>Master of mana flow. Reroute arcane energy on the fly to power up whatever the battlefield demands.</p></div>
-              <p class="cw-detail__flavor">Geordi would be proud of your power routing.</p>
-            </div>
-          </details>
-
-          <p class="cw-group__head cw-group__head--locked">Locked</p>
-
-          <details class="cw-entry cw-entry--locked" id="wiz-lock1" data-entry>
-            <summary class="cw-entry__row"><i class="ra ra-turd" aria-hidden="true"></i><span class="cw-entry__label">???</span></summary>
-            <div class="cw-entry__detail">
-              <div class="cw-detail__icon cw-detail__icon--locked"><i class="ra ra-turd" aria-hidden="true"></i></div>
-              <h3 class="cw-detail__title">???</h3>
-              <p class="cw-detail__category">Locked &middot; Earn an achievement</p>
-              <div class="cw-detail__body"><p>This wizard has not been unlocked yet.</p></div>
-              <p class="cw-detail__flavor">Something smells off&hellip;</p>
-            </div>
-          </details>
-
-          <details class="cw-entry cw-entry--locked" id="wiz-lock2" data-entry>
-            <summary class="cw-entry__row"><i class="ra ra-revolver" aria-hidden="true"></i><span class="cw-entry__label">???</span></summary>
-            <div class="cw-entry__detail">
-              <div class="cw-detail__icon cw-detail__icon--locked"><i class="ra ra-revolver" aria-hidden="true"></i></div>
-              <h3 class="cw-detail__title">???</h3>
-              <p class="cw-detail__category">Locked &middot; Earn an achievement</p>
-              <div class="cw-detail__body"><p>This wizard has not been unlocked yet.</p></div>
-              <p class="cw-detail__flavor">Spells? Where you're going, you don't need spells.</p>
-            </div>
-          </details>
-
-          <details class="cw-entry cw-entry--locked" id="wiz-lock3" data-entry>
-            <summary class="cw-entry__row"><i class="ra ra-sword" aria-hidden="true"></i><span class="cw-entry__label">???</span></summary>
-            <div class="cw-entry__detail">
-              <div class="cw-detail__icon cw-detail__icon--locked"><i class="ra ra-sword" aria-hidden="true"></i></div>
-              <h3 class="cw-detail__title">???</h3>
-              <p class="cw-detail__category">Locked &middot; Earn an achievement</p>
-              <div class="cw-detail__body"><p>This wizard has not been unlocked yet.</p></div>
-              <p class="cw-detail__flavor">Some wizards prefer a more&hellip; hands-on approach.</p>
-            </div>
-          </details>
-
-          <details class="cw-entry cw-entry--locked" id="wiz-lock4" data-entry>
-            <summary class="cw-entry__row"><i class="ra ra-fizzing-flask" aria-hidden="true"></i><span class="cw-entry__label">???</span></summary>
-            <div class="cw-entry__detail">
-              <div class="cw-detail__icon cw-detail__icon--locked"><i class="ra ra-fizzing-flask" aria-hidden="true"></i></div>
-              <h3 class="cw-detail__title">???</h3>
-              <p class="cw-detail__category">Locked &middot; Earn an achievement</p>
-              <div class="cw-detail__body"><p>This wizard has not been unlocked yet.</p></div>
-              <p class="cw-detail__flavor">The cauldron whispers to those who listen.</p>
-            </div>
-          </details>
-
-          <details class="cw-entry cw-entry--locked" id="wiz-lock5" data-entry>
-            <summary class="cw-entry__row"><i class="ra ra-lightning-storm" aria-hidden="true"></i><span class="cw-entry__label">???</span></summary>
-            <div class="cw-entry__detail">
-              <div class="cw-detail__icon cw-detail__icon--locked"><i class="ra ra-lightning-storm" aria-hidden="true"></i></div>
-              <h3 class="cw-detail__title">???</h3>
-              <p class="cw-detail__category">Locked &middot; Earn an achievement</p>
-              <div class="cw-detail__body"><p>This wizard has not been unlocked yet.</p></div>
-              <p class="cw-detail__flavor">The sky darkens. Something is brewing up there.</p>
-            </div>
-          </details>
-
-          <details class="cw-entry cw-entry--locked" id="wiz-lock6" data-entry>
-            <summary class="cw-entry__row"><i class="ra ra-rune-stone" aria-hidden="true"></i><span class="cw-entry__label">???</span></summary>
-            <div class="cw-entry__detail">
-              <div class="cw-detail__icon cw-detail__icon--locked"><i class="ra ra-rune-stone" aria-hidden="true"></i></div>
-              <h3 class="cw-detail__title">???</h3>
-              <p class="cw-detail__category">Locked &middot; Earn an achievement</p>
-              <div class="cw-detail__body"><p>This wizard has not been unlocked yet.</p></div>
-              <p class="cw-detail__flavor">Mysterious symbols. Mysterious results.</p>
-            </div>
-          </details>
-
-          <details class="cw-entry cw-entry--locked" id="wiz-lock7" data-entry>
-            <summary class="cw-entry__row"><i class="ra ra-sheep" aria-hidden="true"></i><span class="cw-entry__label">???</span></summary>
-            <div class="cw-entry__detail">
-              <div class="cw-detail__icon cw-detail__icon--locked"><i class="ra ra-sheep" aria-hidden="true"></i></div>
-              <h3 class="cw-detail__title">???</h3>
-              <p class="cw-detail__category">Locked &middot; Earn an achievement</p>
-              <div class="cw-detail__body"><p>This wizard has not been unlocked yet.</p></div>
-              <p class="cw-detail__flavor">Violence is never the answer&hellip; right?</p>
-            </div>
-          </details>
-
-          <details class="cw-entry cw-entry--locked" id="wiz-lock8" data-entry>
-            <summary class="cw-entry__row"><i class="ra ra-burning-eye" aria-hidden="true"></i><span class="cw-entry__label">???</span></summary>
-            <div class="cw-entry__detail">
-              <div class="cw-detail__icon cw-detail__icon--locked"><i class="ra ra-burning-eye" aria-hidden="true"></i></div>
-              <h3 class="cw-detail__title">???</h3>
-              <p class="cw-detail__category">Locked &middot; Earn an achievement</p>
-              <div class="cw-detail__body"><p>This wizard has not been unlocked yet.</p></div>
-              <p class="cw-detail__flavor">Some people just want to watch the world burn.</p>
-            </div>
-          </details>
-        </section>
 
         <!-- ═══ SCREENSHOTS ═══ -->
         <section class="cw-section" id="screenshots" aria-label="Screenshots">
@@ -524,7 +413,7 @@
             <summary class="cw-entry__row"><i class="ra ra-hood" aria-hidden="true"></i><span class="cw-entry__label">Wizard Types</span></summary>
             <div class="cw-entry__detail">
               <h3 class="cw-detail__title">Wizard Types</h3>
-              <div class="cw-detail__body"><p>Different wizard types offer unique playstyles. Three are available to start &mdash; Boring Ole Mage, Randomancer, and Arcanorouter &mdash; and eight more remain locked until you earn their achievements. See the <strong>Wizards</strong> tab for the full roster.</p></div>
+              <div class="cw-detail__body"><p>Different wizard types offer unique playstyles. Three are available to start &mdash; Boring Ole Mage, Randomancer, and Arcanorouter &mdash; and eight more remain locked until you earn their achievements. See <strong>11 Wizard Archetypes</strong> under the Features tab for the full roster.</p></div>
             </div>
           </details>
 

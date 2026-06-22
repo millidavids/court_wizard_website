@@ -14,7 +14,7 @@
   'use strict';
 
   var root = document.documentElement;
-  var VALID = ['about', 'features', 'wizards', 'screenshots', 'manual', 'changelog'];
+  var VALID = ['about', 'features', 'screenshots', 'manual', 'changelog'];
 
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.cw-tab'));
   var entries = Array.prototype.slice.call(document.querySelectorAll('[data-entry]'));

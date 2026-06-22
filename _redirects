@@ -12,3 +12,8 @@
 /credits.html   /about/credits   301
 /privacy.html   /about/privacy   301
 /health.html    /about/health    301
+
+# The Wizards tab was folded into the Features tab's "11 Wizard Archetypes"
+# entry; send the old top-level route (and any sub-route) to its new home.
+/wizards        /features/wizards   301
+/wizards/*      /features/wizards   301
