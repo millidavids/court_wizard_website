@@ -6,22 +6,23 @@
   <title>Court Wizard — Defend Your Kingdom with Arcane Power</title>
   <meta name="description" content="Court Wizard is a 3D real-time strategy tower defense game built in Rust. Choose from 11 wizard archetypes, master 32 spells with talent trees, and defend your kingdom.">
   <meta name="theme-color" content="#1a1428">
-  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="icon" type="image/png" href="/images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/rpg-awesome@0.2.0/css/rpg-awesome.min.css">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="/css/styles.css">
   <script>
     // Progressive enhancement: flip to JS mode, pick the active tab from the
-    // hash, and resolve the theme — all BEFORE first paint (no flash).
+    // URL path, and resolve the theme — all BEFORE first paint (no flash).
     (function () {
       var d = document.documentElement;
       d.className = 'js';
       var valid = ['about', 'features', 'wizards', 'screenshots', 'manual', 'changelog'];
-      // Hash is either "#tab" or "#tab/anchor" (deep link to an entry); the
-      // tab is always the first segment.
-      var t = ((location.hash || '').slice(1).split('/'))[0];
+      // Path is "/tab" or "/tab/slug"; the tab is always the first segment.
+      // Fall back to a legacy "#tab/..." hash when the path is root (old links).
+      var t = (location.pathname || '/').split('/').filter(Boolean)[0];
+      if (!t && location.hash) t = location.hash.replace(/^#/, '').split('/')[0];
       d.dataset.tab = valid.indexOf(t) !== -1 ? t : 'about';
       try {
         var st = localStorage.getItem('cw-theme');
@@ -41,14 +42,14 @@
   </div>
   <div class="page-darken" aria-hidden="true"></div>
 
-  <a href="#about" class="skip-link">Skip to content</a>
+  <a href="#content" class="skip-link">Skip to content</a>
 
   <!-- ═══ COMPENDIUM FRAME ═══ -->
   <div class="cw-frame cw-frame--app">
 
     <!-- Header: title left, Wishlist CTA + studio logo right -->
     <header class="cw-header">
-      <h1 class="cw-title"><a href="index.html">Court Wizard</a></h1>
+      <h1 class="cw-title"><a href="/">Court Wizard</a></h1>
       <div class="cw-header__actions">
         <button class="cw-theme-toggle" type="button" aria-label="Switch theme" title="Switch theme">
           <svg class="cw-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 1.5v2.5M12 20v2.5M3.2 3.2l1.8 1.8M19 19l1.8 1.8M1.5 12h2.5M20 12h2.5M3.2 20.8l1.8-1.8M19 5l1.8-1.8"/></svg>
@@ -72,16 +73,17 @@
       <div class="cw-right">
 
         <nav class="cw-tabs" aria-label="Sections">
-          <a class="cw-tab" href="#about">About</a>
-          <a class="cw-tab" href="#features">Features</a>
-          <a class="cw-tab" href="#wizards">Wizards</a>
-          <a class="cw-tab" href="#screenshots">Screenshots</a>
-          <a class="cw-tab" href="#manual">Manual</a>
-          <a class="cw-tab" href="#changelog">Changelog</a>
+          <a class="cw-tab" href="/about">About</a>
+          <a class="cw-tab" href="/features">Features</a>
+          <a class="cw-tab" href="/wizards">Wizards</a>
+          <a class="cw-tab" href="/screenshots">Screenshots</a>
+          <a class="cw-tab" href="/manual">Manual</a>
+          <a class="cw-tab" href="/changelog">Changelog</a>
         </nav>
 
-        <!-- scrollable content; one section per tab -->
-        <div class="cw-content">
+        <!-- scrollable content; one section per tab. id+tabindex = the
+             always-visible target for the "Skip to content" link. -->
+        <div class="cw-content" id="content" tabindex="-1">
 
         <!-- ═══ ABOUT ═══ -->
         <section class="cw-section" id="about" aria-label="About">
@@ -130,21 +132,21 @@
             </div>
           </details>
 
-          <details class="cw-entry" id="abt-credits" data-entry data-anchor="credits">
+          <details class="cw-entry" id="abt-credits" data-entry data-route="credits">
             <summary class="cw-entry__row"><i class="ra ra-trophy" aria-hidden="true"></i><span class="cw-entry__label">Credits</span></summary>
             <div class="cw-entry__detail">
               <!-- inject:md content/CREDITS.md -->
             </div>
           </details>
 
-          <details class="cw-entry" id="abt-privacy" data-entry data-anchor="privacy">
+          <details class="cw-entry" id="abt-privacy" data-entry data-route="privacy">
             <summary class="cw-entry__row"><i class="ra ra-key" aria-hidden="true"></i><span class="cw-entry__label">Privacy</span></summary>
             <div class="cw-entry__detail">
               <!-- inject:md content/PRIVACY_POLICY.md -->
             </div>
           </details>
 
-          <details class="cw-entry" id="abt-health" data-entry data-anchor="health">
+          <details class="cw-entry" id="abt-health" data-entry data-route="health">
             <summary class="cw-entry__row"><i class="ra ra-hospital-cross" aria-hidden="true"></i><span class="cw-entry__label">Health &amp; Safety</span></summary>
             <div class="cw-entry__detail">
               <!-- inject:md content/HEALTH_WARNING.md -->
@@ -366,7 +368,7 @@
           <p class="cw-section__intro">Click a screenshot for a caption.</p>
 
           <details class="cw-entry cw-entry--shot" id="shot-gameplay" data-entry>
-            <summary class="cw-entry__row"><img class="cw-entry__thumb" src="images/screenshots/gameplay.png" alt="Gameplay" loading="lazy"><span class="cw-entry__label">Gameplay</span></summary>
+            <summary class="cw-entry__row"><img class="cw-entry__thumb" src="/images/screenshots/gameplay.png" alt="Gameplay" loading="lazy"><span class="cw-entry__label">Gameplay</span></summary>
             <div class="cw-entry__detail">
               <h3 class="cw-detail__title">Gameplay</h3>
               <div class="cw-detail__body"><p>Casting spells from the tower as waves close in on the castle.</p></div>
@@ -374,7 +376,7 @@
           </details>
 
           <details class="cw-entry cw-entry--shot" id="shot-brew" data-entry>
-            <summary class="cw-entry__row"><img class="cw-entry__thumb" src="images/screenshots/brew.png" alt="Brewing potions" loading="lazy"><span class="cw-entry__label">Brewing</span></summary>
+            <summary class="cw-entry__row"><img class="cw-entry__thumb" src="/images/screenshots/brew.png" alt="Brewing potions" loading="lazy"><span class="cw-entry__label">Brewing</span></summary>
             <div class="cw-entry__detail">
               <h3 class="cw-detail__title">Brewing</h3>
               <div class="cw-detail__body"><p>Mix ingredients dropped by enemies in the cauldron between the chaos.</p></div>
@@ -382,7 +384,7 @@
           </details>
 
           <details class="cw-entry cw-entry--shot" id="shot-study" data-entry>
-            <summary class="cw-entry__row"><img class="cw-entry__thumb" src="images/screenshots/study.png" alt="The study" loading="lazy"><span class="cw-entry__label">The Study</span></summary>
+            <summary class="cw-entry__row"><img class="cw-entry__thumb" src="/images/screenshots/study.png" alt="The study" loading="lazy"><span class="cw-entry__label">The Study</span></summary>
             <div class="cw-entry__detail">
               <h3 class="cw-detail__title">The Study</h3>
               <div class="cw-detail__body"><p>Research new spells and spend your Arcane Insight at the Wizard's Tower.</p></div>
@@ -390,7 +392,7 @@
           </details>
 
           <details class="cw-entry cw-entry--shot" id="shot-chaos" data-entry>
-            <summary class="cw-entry__row"><img class="cw-entry__thumb" src="images/screenshots/chaos.png" alt="Battlefield chaos" loading="lazy"><span class="cw-entry__label">Battlefield Chaos</span></summary>
+            <summary class="cw-entry__row"><img class="cw-entry__thumb" src="/images/screenshots/chaos.png" alt="Battlefield chaos" loading="lazy"><span class="cw-entry__label">Battlefield Chaos</span></summary>
             <div class="cw-entry__detail">
               <h3 class="cw-detail__title">Battlefield Chaos</h3>
               <div class="cw-detail__body"><p>When the spells and the swarm collide, the screen earns its name.</p></div>
@@ -398,7 +400,7 @@
           </details>
 
           <details class="cw-entry cw-entry--shot" id="shot-ogre" data-entry>
-            <summary class="cw-entry__row"><img class="cw-entry__thumb" src="images/screenshots/ogre_boss.png" alt="Ogre boss" loading="lazy"><span class="cw-entry__label">Ogre Boss</span></summary>
+            <summary class="cw-entry__row"><img class="cw-entry__thumb" src="/images/screenshots/ogre_boss.png" alt="Ogre boss" loading="lazy"><span class="cw-entry__label">Ogre Boss</span></summary>
             <div class="cw-entry__detail">
               <h3 class="cw-detail__title">Ogre Boss</h3>
               <div class="cw-detail__body"><p>One of the bosses that wants you dead. Specifically.</p></div>
@@ -406,7 +408,7 @@
           </details>
 
           <details class="cw-entry cw-entry--shot" id="shot-roguelite" data-entry>
-            <summary class="cw-entry__row"><img class="cw-entry__thumb" src="images/screenshots/roguelite.png" alt="Roguelite run" loading="lazy"><span class="cw-entry__label">Roguelite Run</span></summary>
+            <summary class="cw-entry__row"><img class="cw-entry__thumb" src="/images/screenshots/roguelite.png" alt="Roguelite run" loading="lazy"><span class="cw-entry__label">Roguelite Run</span></summary>
             <div class="cw-entry__detail">
               <h3 class="cw-detail__title">Roguelite Run</h3>
               <div class="cw-detail__body"><p>Seeded runs across 25 levels with difficulty sliders to taste.</p></div>
@@ -561,21 +563,21 @@
       <div class="cw-footer__links">
         <a href="https://store.steampowered.com/app/4550880/Court_Wizard/" target="_blank" rel="noopener"><i class="ra ra-fire" aria-hidden="true"></i> Steam</a>
         <span class="cw-footer__dot" aria-hidden="true">&middot;</span>
-        <a href="#about/credits">Credits</a>
+        <a href="/about/credits">Credits</a>
         <span class="cw-footer__dot" aria-hidden="true">&middot;</span>
-        <a href="#about/health">Health</a>
+        <a href="/about/health">Health</a>
         <span class="cw-footer__dot" aria-hidden="true">&middot;</span>
-        <a href="#about/privacy">Privacy</a>
+        <a href="/about/privacy">Privacy</a>
         <span class="cw-footer__dot" aria-hidden="true">&middot;</span>
         <span class="cw-footer__copy">&copy; 2026 Blackhearth Games</span>
       </div>
       <a class="cw-footer__brand" href="https://blackhearthgames.com" target="_blank" rel="noopener" aria-label="Blackhearth Games">
-        <img src="images/blackhearth_logo.svg" alt="Blackhearth Games">
+        <img src="/images/blackhearth_logo.svg" alt="Blackhearth Games">
       </a>
     </footer>
 
   </div><!-- /.cw-frame -->
 
-  <script src="js/main.js" defer></script>
+  <script src="/js/main.js" defer></script>
 </body>
 </html>

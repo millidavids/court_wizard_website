@@ -1,7 +1,14 @@
 # Cloudflare Pages redirects.
 # The standalone legal pages were folded into the About tab of index.html
-# (each is now a deep-linked entry). Preserve old inbound links — e.g. the
+# (each is now a path-routed entry). Preserve old inbound links — e.g. the
 # privacy-policy URL registered on the Steam store — so they don't 404.
-/credits.html   /#about/credits   301
-/privacy.html   /#about/privacy   301
-/health.html    /#about/health    301
+#
+# Deep paths like /about/privacy or /features/endless are NOT listed here: they
+# are handled by Cloudflare Pages' default single-page-application fallback
+# (active because the build ships no 404.html), which serves index.html for
+# unmatched paths while still serving real assets (/css, /js, /images) directly.
+# Do NOT add a "/* /index.html 200" catch-all — _redirects rules are applied
+# even when an asset matches, so a catch-all would shadow those assets.
+/credits.html   /about/credits   301
+/privacy.html   /about/privacy   301
+/health.html    /about/health    301
