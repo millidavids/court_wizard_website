@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.10.74] - 2026-06-28
+
+### Changed
+- **Sharper controller button prompts** — on-screen controller glyphs now match your controller and your bindings more precisely, and the rune and spin prompts show the correct D-pad directions.
+
 ## [v0.10.73] - 2026-06-28
 
 ### Added
