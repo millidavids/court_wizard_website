@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.10.77] - 2026-07-01
+
+### Changed
+- **Cleaner Randomancer spin prompt** — the keyboard spin cue is now a compact "Press Space" centered on the wheel.
+
 ## [v0.10.76] - 2026-06-30
 
 ### Fixed
