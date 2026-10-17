@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.0.43] - 2026-10-17
+
+### Description
+A quick fix for the settings screen, which could run off the right edge of the screen after the last update and hide its buttons and sliders. Menus fit inside the screen again.
+
+### Fixed
+- **The settings screen fits the screen again** — since the last update, the settings screen could run off the right edge, hiding the Back button, the option buttons and the sliders. It now fits, and the other full-screen menus are kept inside the screen the same way.
+
 ## [v1.0.42] - 2026-10-11
 
 ### Description
